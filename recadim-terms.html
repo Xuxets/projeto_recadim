@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - Recadim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-1: #ff6926;
+            --color-2: #1e293b;
+            --color-3: #0f766e;
+            --color-4: #40c79e;
+            --color-5: #fef7ed;
+            --color-6: #dc2626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-2);
+            background: linear-gradient(135deg, var(--color-5) 0%, #ffe5d6 100%);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+ /*        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .speech-bubble {
+            width: 60px;
+            height: 60px;
+            border-radius: 50% 50% 50% 12px;
+            background: var(--color-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, 0.3);
+        }
+
+        .dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+        }
+ */
+
+
+
+ 
+        .logo-link {
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--color-1);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #ff5515;
+        }
+
+        h1 {
+            font-family: 'Alegreya', serif;
+            font-size: 3rem;
+            color: var(--color-2);
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-3);
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        h2 {
+            font-family: 'Alegreya', serif;
+            font-size: 1.8rem;
+            color: var(--color-2);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-1);
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-family: 'Alegreya', serif;
+            font-size: 1.3rem;
+            color: var(--color-3);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--color-2);
+            opacity: 0.9;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--color-2);
+            opacity: 0.9;
+        }
+
+        .highlight-box {
+            background: rgba(255, 105, 38, 0.08);
+            border-left: 4px solid var(--color-1);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: rgba(220, 38, 38, 0.08);
+            border-left: 4px solid var(--color-6);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-1);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 40px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 38, 0.4);
+        }
+
+        .date-update {
+            text-align: center;
+            color: var(--color-3);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+
+<!-- <body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="speech-bubble">
+                    <div class="dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div> -->
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="logo-link">
+                <img src="img/simbol.png" alt="Logo da Recadim" class="logo-image" style="height: 60px;">
+            </a>
+            
+ <!-- html do botão back to top        -->
+            <a href="#" class="back-to-top" id="backToTopBtn">
+                ▲
+            </a>
+            
+
+
+            <h1>Termos de Uso</h1>
+            <p class="subtitle">Regras claras para uma experiência incrível</p>
+        </div>
+
+        <div class="content">
+            <h2>1. Aceitação dos Termos</h2>
+            <p>
+                Ao utilizar os serviços do Recadim, você concorda com estes Termos de Uso. Se você não concordar com qualquer parte destes termos, não poderá utilizar nossos serviços.
+            </p>
+            <p>
+                Estes termos constituem um acordo legal entre você ("Usuário") e o Recadim ("nós", "nosso"). Por favor, leia atentamente antes de usar nossos serviços.
+            </p>
+
+            <h2>2. Descrição do Serviço</h2>
+            <p>
+                O Recadim é uma plataforma de criação e envio de mensagens personalizadas via WhatsApp. Nossos serviços incluem:
+            </p>
+            <ul>
+                <li>Criação de mensagens personalizadas com design exclusivo</li>
+                <li>Consultoria para desenvolvimento de conteúdo emocional</li>
+                <li>Agendamento de envio de mensagens</li>
+                <li>Entrega via WhatsApp no horário escolhido</li>
+                <li>Suporte durante todo o processo de criação</li>
+            </ul>
+
+            <h2>3. Cadastro e Conta</h2>
+            <h3>3.1 Requisitos</h3>
+            <p>Para utilizar nossos serviços, você deve:</p>
+            <ul>
+                <li>Ter pelo menos 18 anos de idade</li>
+                <li>Fornecer informações verdadeiras e atualizadas</li>
+                <li>Possuir um número de WhatsApp válido</li>
+                <li>Ter autorização para enviar mensagens aos destinatários escolhidos</li>
+            </ul>
+
+            <h3>3.2 Responsabilidades</h3>
+            <p>Você é responsável por:</p>
+            <ul>
+                <li>Manter suas informações de contato atualizadas</li>
+                <li>Garantir que tem permissão para enviar mensagens aos destinatários</li>
+                <li>O conteúdo das mensagens que solicita</li>
+            </ul>
+
+            <h2>4. Uso Permitido</h2>
+            <p>
+                Você pode usar o Recadim para criar e enviar mensagens positivas, respeitosas e legais. São permitidas mensagens de:
+            </p>
+            <ul>
+                <li>Amor e carinho</li>
+                <li>Felicitações e comemorações</li>
+                <li>Agradecimentos</li>
+                <li>Motivação e apoio</li>
+                <li>Desculpas e reconciliação</li>
+                <li>Homenagens respeitosas</li>
+            </ul>
+
+            <h2>5. Uso Proibido</h2>
+            
+            <div class="warning-box">
+                <strong>⚠️ Atenção:</strong> O uso indevido resultará em cancelamento imediato do serviço sem reembolso.
+            </div>
+
+            <p>É estritamente proibido usar o Recadim para:</p>
+            <ul>
+                <li>Enviar mensagens de assédio, ameaça ou intimidação</li>
+                <li>Compartilhar conteúdo ilegal, difamatório ou calunioso</li>
+                <li>Violar a privacidade de terceiros</li>
+                <li>Enviar spam ou mensagens não solicitadas em massa</li>
+                <li>Fazer-se passar por outra pessoa</li>
+                <li>Promover atividades ilegais ou prejudiciais</li>
+                <li>Enviar conteúdo adulto ou inadequado</li>
+                <li>Violar direitos autorais ou propriedade intelectual</li>
+            </ul>
+
+            <h2>6. Processo de Criação e Aprovação</h2>
+            
+            <h3>6.1 Etapas do Serviço</h3>
+            <ol>
+                <li>Solicitação inicial via WhatsApp</li>
+                <li>Desenvolvimento do conteúdo e design</li>
+                <li>Apresentação da prévia para aprovação</li>
+                <li>Ajustes conforme solicitado (até 2 revisões incluídas)</li>
+                <li>Aprovação final do cliente</li>
+                <li>Agendamento e envio da mensagem</li>
+            </ol>
+
+            <h3>6.2 Prazos</h3>
+            <ul>
+                <li>Criação inicial: 24 a 48 horas</li>
+                <li>Revisões: 12 a 24 horas cada</li>
+                <li>Agendamento mínimo: 2 horas de antecedência</li>
+            </ul>
+
+            <h2>7. Pagamento e Reembolso</h2>
+            
+            <h3>7.1 Valores</h3>
+            <p>
+                Os valores são informados individualmente para cada projeto, baseados em:
+            </p>
+            <ul>
+                <li>Complexidade da mensagem</li>
+                <li>Recursos visuais utilizados</li>
+                <li>Urgência da entrega</li>
+                <li>Número de revisões adicionais</li>
+            </ul>
+
+            <h3>7.2 Formas de Pagamento</h3>
+            <ul>
+                <li>PIX</li>
+                <li>Cartão de crédito</li>
+                <li>Cartão de débito</li>
+            </ul>
+
+            <h3>7.3 Política de Reembolso</h3>
+            <ul>
+                <li><strong>100% de reembolso:</strong> Cancelamento antes do início da criação</li>
+                <li><strong>50% de reembolso:</strong> Cancelamento após início da criação, mas antes da aprovação final</li>
+                <li><strong>Sem reembolso:</strong> Após aprovação final ou envio da mensagem</li>
+            </ul>
+
+            <h2>8. Propriedade Intelectual</h2>
+            <p>
+                Após o pagamento completo, você terá direito de uso da mensagem criada. No entanto, o Recadim mantém:
+            </p>
+            <ul>
+                <li>Direitos sobre técnicas e estilos de design desenvolvidos</li>
+                <li>Direito de usar trabalhos como portfólio (sem identificação pessoal)</li>
+                <li>Propriedade de templates e elementos gráficos base</li>
+            </ul>
+
+            <h2>9. Privacidade e Confidencialidade</h2>
+            <p>
+                Comprometemo-nos a manter em sigilo:
+            </p>
+            <ul>
+                <li>O conteúdo das suas mensagens pessoais</li>
+                <li>Informações dos destinatários</li>
+                <li>Detalhes pessoais compartilhados durante o processo</li>
+            </ul>
+
+            <div class="highlight-box">
+                Para mais detalhes sobre como tratamos seus dados, consulte nossa <a href="politica-privacidade.html" style="color: var(--color-1);">Política de Privacidade</a>.
+            </div>
+
+            <h2>10. Limitação de Responsabilidade</h2>
+            <p>
+                O Recadim não se responsabiliza por:
+            </p>
+            <ul>
+                <li>Reações ou respostas dos destinatários às mensagens</li>
+                <li>Problemas técnicos do WhatsApp ou operadoras</li>
+                <li>Uso indevido das mensagens após a entrega</li>
+                <li>Danos indiretos ou consequenciais</li>
+                <li>Atrasos causados por força maior</li>
+            </ul>
+
+            <h2>11. Modificações do Serviço</h2>
+            <p>
+                Reservamos o direito de:
+            </p>
+            <ul>
+                <li>Modificar ou descontinuar serviços</li>
+                <li>Alterar preços com aviso prévio</li>
+                <li>Atualizar estes termos quando necessário</li>
+                <li>Implementar novos recursos ou funcionalidades</li>
+            </ul>
+
+            <h2>12. Cancelamento e Suspensão</h2>
+            <p>
+                Podemos cancelar ou suspender seu acesso ao serviço se você:
+            </p>
+            <ul>
+                <li>Violar estes Termos de Uso</li>
+                <li>Fornecer informações falsas</li>
+                <li>Usar o serviço para fins ilegais ou prejudiciais</li>
+                <li>Não efetuar pagamentos devidos</li>
+            </ul>
+
+            <h2>13. Disposições Gerais</h2>
+            
+            <h3>13.1 Lei Aplicável</h3>
+            <p>
+                Estes termos são regidos pelas leis brasileiras, especialmente o Código de Defesa do Consumidor e a Lei Geral de Proteção de Dados.
+            </p>
+
+            <h3>13.2 Resolução de Conflitos</h3>
+            <p>
+                Tentaremos resolver qualquer disputa de forma amigável. Caso não seja possível, o foro competente será o da comarca de Londrina, Paraná.
+            </p>
+
+            <h3>13.3 Acordo Integral</h3>
+            <p>
+                Estes Termos de Uso constituem o acordo integral entre você e o Recadim, substituindo quaisquer acordos anteriores.
+            </p>
+
+            <h2>14. Contato e Suporte</h2>
+            <p>
+                Para dúvidas sobre estes termos ou nossos serviços:
+            </p>
+            <ul>
+                <li><strong>WhatsApp:</strong> (43) 99690-1113</li>
+                <li><strong>Horário:</strong> Segunda a Sexta, 9h às 18h</li>
+                <li><strong>Resposta:</strong> Em até 24 horas úteis</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>💡 Dica:</strong> Ao usar nossos serviços, você está criando momentos especiais. Use esse poder com responsabilidade e carinho!
+            </div>
+
+            <p class="date-update">
+                <strong>Última atualização:</strong> Janeiro de 2025<br>
+                <strong>Vigência:</strong> A partir da data de aceitação
+            </p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">
+                ← Voltar ao Site
+            </a>
+        </div>
+    </div>
+
+    <script>
+// Adiciona o botão de voltar ao topo
+window.addEventListener('scroll', function() {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (window.scrollY > 300) { // Mostra o botão após rolar 300px
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+// Faz a rolagem suave ao topo ao clicar no botão
+document.getElementById('backToTopBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+
+
+    </script>
+
+
+
+</body>
+</html>

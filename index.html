@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recadim - Seu Amigo Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-1: #ff6926;
+            --color-2: #1e293b;
+            --color-3: #0f766e;
+            --color-4: #40c79e;
+            --color-5: #fef7ed;
+            --color-6: #dc2626;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-2);
+            overflow-x: hidden;
+            background: var(--color-5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-5) 0%, #ffe5d6 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 105, 38, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(64, 199, 158, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(254, 247, 237, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+
+
+
+
+  /*
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        
+
+        .speech-bubble {
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 50% 12px;
+            background: var(--color-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: white;
+            animation: pulse 2s infinite;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .logo-text {
+            font-family: 'Alegreya', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-1);
+            letter-spacing: -0.5px;
+        }
+
+*/
+
+
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-2);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--color-1);
+            background: rgba(255, 105, 38, 0.1);
+        }
+
+        .cta-nav-btn {
+            background: var(--color-1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, 0.3);
+            font-size: 0.95rem;
+        }
+
+        .cta-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 105, 38, 0.4);
+            background: #ff5515;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 50;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Alegreya', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--color-2);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero h1 span {
+            color: var(--color-1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--color-3);
+            margin-bottom: 30px;
+            font-weight: 500;
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-2);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            animation: slideUp 1s ease-out 0.4s both;
+            opacity: 0.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background: var(--color-1);
+            color: white;
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 105, 38, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 105, 38, 0.4);
+            background: #ff5515;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-3);
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            background: var(--color-4);
+            color: white;
+            border-color: var(--color-4);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Alegreya', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--color-2);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--color-3);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--color-5);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-1);
+            box-shadow: 0 15px 40px rgba(255, 105, 38, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-1) 0%, var(--color-6) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-family: 'Alegreya', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-2);
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: var(--color-2);
+            line-height: 1.6;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--color-3) 0%, var(--color-4) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .about .section-title {
+            color: white;
+        }
+
+        .about .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Alegreya', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-5);
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+        }
+
+        /* How it Works Section */
+        .how-it-works {
+            padding: 100px 20px;
+            background: var(--color-5);
+        }
+
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 30px;
+        }
+
+        .step-card {
+            display: flex;
+            align-items: start;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(255, 105, 38, 0.15);
+        }
+
+        .step-number {
+            background: var(--color-1);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-family: 'Alegreya', serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--color-2);
+        }
+
+        .step-content p {
+            color: var(--color-2);
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 180px 20px;
+            background: linear-gradient(135deg, white 0%, var(--color-5) 100%);
+            text-align: center;
+        }
+
+        .final-cta .section-title {
+            color: var(--color-2);
+            margin-bottom: 30px;
+        }
+
+        .final-cta .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--color-3);
+            margin-bottom: 50px;
+        }
+
+
+
+
+        /* Footer */
+        .footer {
+            background: var(--color-2);
+            color: white;
+            padding: 60px 20px 40px;
+            
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Alegreya', serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--color-4);
+        }
+
+
+        .footer-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+
+
+
+
+
+
+
+        /*Footer bottom redes!*/
+
+        .footer-bottom-redes {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            margin-bottom: -10px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--color-1);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 105, 38, 0.3);
+        }
+
+        .social-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+
+
+/* caixa de dialog que envia email */
+        dialog {
+        padding: 0;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        width: 90%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        }
+
+        dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+        }
+
+        .popup-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        }
+
+        .popup-content h2 {
+        font-family: 'Alegreya', serif;
+        font-size: 1.8rem;
+        color: var(--color-2);
+        }
+
+        .popup-content p {
+        color: var(--color-2);
+        line-height: 1.6;
+        }
+
+        .popup-content textarea {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        resize: vertical;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        }
+
+        .popup-content button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        }
+
+        .popup-content button[type="submit"] {
+        background-color: var(--color-1);
+        color: white;
+        }
+
+        .popup-content button[type="button"] {
+        background-color: #ccc;
+        color: var(--color-2);
+        }
+
+        .popup-content button:hover {
+        opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+        .popup-content h2 {
+            font-size: 1.5rem;
+        }
+        }
+
+
+
+/* caixa de texto do suporte */
+        .form-group {
+        margin-bottom: 15px;
+        }
+
+        .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--color-2);
+        }
+
+        .form-group input,
+        .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        }
+
+        .form-group textarea {
+        resize: vertical;
+        }
+
+
+
+
+        /* Floating elements */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--color-1);
+            opacity: 0.3;
+            font-size: 25px;
+            animation: floatHeart 15s infinite linear;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--color-2);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .logo-text {
+                font-size: 1.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 40px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .step-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--color-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-loader 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-loader {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--color-1);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s, visibility 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #ff5515;
+        }
+
+
+
+
+    </style>
+</head>
+
+
+
+
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-icon">
+            <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- botao back to top -->
+    <a href="#" class="back-to-top" id="backToTopBtn">
+        ▲
+    </a>
+
+
+
+
+
+    <nav class="nav" id="navbar">
+        <div class="logo">
+            <a href="#" class="logo-link">
+                <img src="img/top-logo.png" alt="Logo da Recadim" class="logo-image" style="height: 26px;">
+            </a>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#recursos" class="nav-link">Recursos</a>
+            <a href="#como-funciona" class="nav-link">Como Funciona</a>
+            <a href="#sobre" class="nav-link">Sobre</a>
+            <a href="#contato" class="nav-link">Contato</a>
+            <a href="https://wa.me/5543996901113?text=Olá! Quero conhecer o serviço Recadim" class="cta-nav-btn">Falar Conosco</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+            
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-hearts">
+            <div class="heart" style="left: 10%; animation-delay: 0s;">♥</div>
+            <div class="heart" style="left: 20%; animation-delay: 3s;">♥</div>
+            <div class="heart" style="left: 30%; animation-delay: 6s;">♥</div>
+            <div class="heart" style="left: 40%; animation-delay: 2s;">♥</div>
+            <div class="heart" style="left: 50%; animation-delay: 5s;">♥</div>
+            <div class="heart" style="left: 60%; animation-delay: 8s;">♥</div>
+            <div class="heart" style="left: 70%; animation-delay: 1s;">♥</div>
+            <div class="heart" style="left: 80%; animation-delay: 4s;">♥</div>
+            <div class="heart" style="left: 90%; animation-delay: 7s;">♥</div>
+        </div>
+        <div class="hero-content">
+            <h1>Seu <span>Amigo Digital</span> de Sempre</h1>
+            <p class="hero-subtitle">Diga o que seu coração sente</p>
+            <p class="hero-description">
+                O Recadim é seu correio elegante e moderno. Criamos mensagens personalizadas únicas que chegam direto no WhatsApp da pessoa especial, transformando palavras simples em momentos inesquecíveis.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5543996901113?text=Olá! Gostaria de conhecer o serviço Recadim" class="btn-primary">
+                    💌 Criar Minha Mensagem
+                </a>
+                <a href="#como-funciona" class="btn-secondary">
+                    📖 Ver Como Funciona
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features fade-in" id="recursos">
+        <div class="container">
+            <h2 class="section-title">Como Transformamos Palavras</h2>
+            <p class="section-subtitle">
+                Cada mensagem é uma obra de arte digital, criada especialmente para tocar o coração
+            </p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                    <img src="img/estrela-icon.png" alt="Ícone de estrela brilhante" style="width: 40px; height: 40px;"></div>
+                    <h3 class="feature-title">Mensagens Exclusivas</h3>
+                    <p class="feature-description">
+                        Cada mensagem é única, criada sob medida para sua ocasião especial. Não usamos templates - criamos arte digital personalizada para você.
+                    </p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💝</div>
+                    <h3 class="feature-title">Entrega Especial</h3>
+                    <p class="feature-description">
+                        Suas mensagens chegam via WhatsApp de forma elegante e impactante, no momento perfeito que você escolher.
+                    </p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Design Emocional</h3>
+                    <p class="feature-description">
+                        Combinamos tipografia, cores e elementos visuais que amplificam suas palavras e criam conexões verdadeiras.
+                    </p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💌</div>
+                    <h3 class="feature-title">Correio Moderno</h3>
+                    <p class="feature-description">
+                        Como cartas antigas, mas com a praticidade digital. Suas mensagens são esperadas, valorizadas e guardadas com carinho.
+                    </p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⏰</div>
+                    <h3 class="feature-title">Momento Perfeito</h3>
+                    <p class="feature-description">
+                        Agendamos a entrega para o momento ideal - aniversários, datas especiais ou simplesmente quando a saudade bater.
+                    </p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Consultoria Pessoal</h3>
+                    <p class="feature-description">
+                        Nossa equipe te ajuda a encontrar as palavras certas e o formato ideal para cada pessoa especial em sua vida.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works fade-in" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <p class="section-subtitle">
+                Três passos simples para criar momentos inesquecíveis
+            </p>
+            <div class="steps-container">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Conte sua História</h4>
+                        <p>Mande mensagem no nosso WhatsApp contando qual ocasião, pessoa e sentimento você quer expressar. Nossa equipe está pronta para te ouvir.</p>
+                    </div>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Criamos Juntos</h4>
+                        <p>Nossa equipe trabalha com você para encontrar as palavras perfeitas e criar o design ideal. Cada detalhe é pensado para emocionar.</p>
+                    </div>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Entregamos com Carinho</h4>
+                        <p>A mensagem chega no WhatsApp da pessoa especial no momento que você escolher, criando um momento único e memorável.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about fade-in" id="sobre">
+        <div class="container">
+            <h2 class="section-title">Nossa Missão</h2>
+            <p class="section-subtitle">Transformando palavras em momentos inesquecíveis</p>
+            <div class="about-content">
+                <p>
+                    O Recadim nasceu da crença de que as palavras certas, no momento certo, podem transformar completamente o dia de alguém. 
+                    Em um mundo onde as mensagens se perderam na velocidade e superficialidade, nós resgatamos a arte de se comunicar com propósito.
+                </p>
+                <p>
+                    Somos um correio elegante e moderno, onde cada mensagem é tratada como uma pequena obra de arte. 
+                    Porque acreditamos que quem você ama merece mais que um "oi, tudo bem?" - merece algo único, especial e memorável.
+                </p>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">2.5k+</span>
+                    <span class="stat-label">Mensagens Criadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Clientes Satisfeitos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Momentos Especiais</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta fade-in" id="download">
+        <div class="container">
+            <h2 class="section-title">Pronto para Criar Algo Especial?</h2>
+            <p class="section-subtitle">
+                Fale conosco no WhatsApp e conte qual mensagem você gostaria de criar. 
+                Nossa equipe está pronta para transformar suas palavras em algo inesquecível.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5543996901113?text=Olá! Quero criar uma mensagem especial no Recadim" class="btn-primary">
+                    💌 Iniciar Conversa
+                </a>
+                <a href="https://wa.me/5543996901113?text=Olá! Tenho algumas dúvidas sobre o Recadim. Podem me ajudar?" class="btn-secondary">
+                    ❓ Tirar Dúvidas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Recadim</h3><p style="color: rgba(255,255,255,0.5); line-height: 1.6;">
+                        <h4>"Diga o que seu coração sente"</h4> 
+                    </p>
+                        
+                    
+                </div>
+                <div class="footer-section">
+                    <h3>Sobre</h3>
+                        <h5>
+                            <a href="#recursos">Recursos</a>
+                            <a href="#como-funciona">Como Funciona</a>
+                            <a href="#sobre">Nossa História</a>
+                        </h5>
+                </div>
+                <div class="footer-section">
+                    <h3>Fale Conosco</h3>         
+                        <h5>
+                            <a href="https://wa.me/5543996901113?text=Gostaria de ser parceiro do Recadim">Parcerias</a>          
+                            <a href="#" id="abrir-suporte-popup">Suporte</a>
+                            <a href="#" id="abrir-historia-popup">Sua História</a>
+                        </h5>                 
+                </div>
+                <div class="footer-section">
+                    <h3>Links Úteis</h3>
+                        <h5>
+                            <a href="recadim-faq.html">Perguntas Frequentes</a>
+                            <a href="recadim-privacy.html">Política de Privacidade</a>
+                            <a href="recadim-terms.html">Termos de Uso</a>
+                        </h5>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="footer-bottom-redes">
+                <p>Redes Sociais:</p><br>
+                <small style="opacity: 0.7; margin-top: 05px; display: block;">
+                </small></p>
+                
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/recadimoficial" class="social-icon">
+                            <img src="img/instagram-icon.png" alt="Instagram" width="30" height="30">
+                        </a>
+                        <a href="index.html" class="social-icon">
+                            <img src="img/facebook-icon.png" alt="Facebook" width="30" height="30">
+                        </a>
+                        <a href="index.html" class="social-icon">
+                            <img src="img/youtube-icon.png" alt="YouTube" width="30" height="30">
+                        </a>
+                        <a href="https://www.tiktok.com/@recadim.oficial" class="social-icon">
+                            <img src="img/tiktok-icon.png" alt="TikTok" width="30" height="30">
+                        </a>
+
+                    </div>
+ 
+            </div>
+
+
+
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Recadim. Feito com amor para transformar palavras em momentos especiais.<br>
+                <small style="opacity: 0.7; margin-top: 10px; display: block;">
+                    Atendimento exclusivo via WhatsApp - Porque cada conversa merece atenção especial
+                </small></p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    
+ <!-- caixa de texto pra sua historia -->
+    <dialog id="historia-popup">
+    <div class="popup-content">
+        <h2>Conte-nos sua história</h2>
+        <p>
+            Qual é a sua história com Recadim? Adoraríamos saber como uma de nossas mensagens 
+            fez a diferença para você ou para alguém especial.
+        </p>
+<!--    trocar email futuramente -->
+        <form action="mailto:recadim.oficial@gmail.com" method="post" enctype="text/plain">
+        <textarea name="historia" rows="6" placeholder="Escreva sua história aqui..."></textarea>
+        <button type="submit">Enviar História</button>
+        <button type="button" id="fechar-popup">Fechar</button>
+        </form>
+    </div>
+    </dialog>
+
+
+    
+
+
+
+<!-- suporte pra webhook n8n -->
+    <dialog id="suporte-popup">
+    <div class="popup-content">
+        <h2>Suporte</h2>
+        <p>
+            Descreva abaixo o problema que você está enfrentando. Nossa equipe entrará em contato
+            o mais breve possível para te ajudar.
+        </p>
+        <form id="suporte-form">       
+        <div class="form-group">
+            <label for="nome">Seu Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="whatsapp">WhatsApp (com DDD):</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
+        </div>
+        <div class="form-group">
+            <label for="problema">Relato do Problema:</label>
+            <textarea id="problema" name="problema" rows="6" required></textarea>
+        </div>
+        <button type="submit">Enviar Relato</button>
+        <button type="button" id="fechar-suporte">Fechar</button>
+        </form>
+    </div>
+    </dialog>
+
+
+
+
+
+    <script>
+        // Hide loader when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Observe feature cards individually
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe step cards individually
+        document.querySelectorAll('.step-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add floating animation to stats on hover
+        document.querySelectorAll('.stat-item').forEach(stat => {
+            stat.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            stat.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Adiciona o botão de voltar ao topo
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 300) { // Mostra o botão após rolar 300px
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Faz a rolagem suave ao topo ao clicar no botão
+        document.getElementById('backToTopBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+
+        // Adiciona o evento para abrir o pop-up
+        document.getElementById('abrir-historia-popup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('historia-popup').showModal();
+        });
+
+        // Adiciona o evento para fechar o pop-up
+        document.getElementById('fechar-popup').addEventListener('click', function() {
+            document.getElementById('historia-popup').close();
+        });
+
+
+
+
+
+
+        // Adiciona o evento de envio do formulário de suporte
+        document.getElementById('suporte-form').addEventListener('submit', async function(e) {
+            // Previne o comportamento padrão do formulário (que é redirecionar a página)
+            e.preventDefault();
+
+            // Coleta os dados do formulário
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // Envia os dados para o seu webhook usando a API fetch
+                const response = await fetch('https://webhook.n8n.recadim.com.br/webhook/suporte-suahistoria2-209Cy8', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                // Verifica se a resposta foi bem-sucedida
+                if (response.ok) {
+                    alert('Sua mensagem de suporte foi enviada com sucesso! Em breve entraremos em contato.');
+                    document.getElementById('suporte-popup').close();
+                } else {
+                    alert('Ocorreu um erro ao enviar. Por favor, tente novamente mais tarde.');
+                }
+            } catch (error) {
+                alert('Ocorreu um erro de conexão. Verifique sua internet e tente novamente.');
+            }
+        });
+
+        // Adiciona o evento para abrir o pop-up de suporte
+        document.getElementById('abrir-suporte-popup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('suporte-popup').showModal();
+        });
+
+        // Adiciona o evento para fechar o pop-up de suporte
+        document.getElementById('fechar-suporte').addEventListener('click', function() {
+            document.getElementById('suporte-popup').close();
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>
