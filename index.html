@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png">
     <title>Recadim - Seu Amigo Digital</title>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
     <style>
@@ -524,31 +525,37 @@
         .footer {
             background: var(--color-2);
             color: white;
-            padding: 60px 20px 40px;
+            padding: 60px 20px 30px 20px;
             
         }
 
         .footer-content {
-            max-width: 1000px;
+            max-width: 700px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
         }
 
         .footer-section h3 {
             font-family: 'Alegreya', serif;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: medium;
+            font-weight: bold;
+            margin-bottom: 10px;
             color: var(--color-4);
+            text-align: center;             
+            
         }
 
 
         .footer-section h4 {
             font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: small;
+            font-weight: normal;
+            margin-bottom: 40px;
             color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            text-shadow: none;
         }
 
 
@@ -564,17 +571,21 @@
             color: var(--color-1);
         }
 
-        .footer-bottom {
+
+
+
+
+
+
+
+        .footer-bottom2 {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
+            padding: 24px 40px 0px 40px;
             margin-top: 40px;
             text-align: center;
+            font-size: small;
             color: rgba(255, 255, 255, 0.5);
         }
-
-
-
-
 
 
 
@@ -582,24 +593,26 @@
         /*Footer bottom redes!*/
 
         .footer-bottom-redes {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            margin-top: 20px;
-            margin-bottom: -10px;
+            
+            padding-top: 10px;
+            margin-top: 0px;
+            margin-bottom: -20px;
             text-align: center;
+            font-size: small;
+
             color: rgba(255, 255, 255, 0.5);
         }
 
         .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
+            display: inline-flex;           
+            align-items: center;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -735,12 +748,6 @@
 
 
 
-
-        
-
-
-
-
         /* Floating elements */
         .floating-hearts {
             position: absolute;
@@ -776,11 +783,6 @@
                 opacity: 0;
             }
         }
-
-
-
-
-
 
 
 
@@ -1220,36 +1222,40 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
     <footer class="footer" id="contato">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+
+
+<!--                 <div class="footer-section">
                     <h3>Recadim</h3><p style="color: rgba(255,255,255,0.5); line-height: 1.6;">
                         <h4>"Diga o que seu coração sente"</h4> 
                     </p>
                         
-                    
-                </div>
+
+
+
+                </div> -->
                 <div class="footer-section">
                     <h3>Sobre</h3>
-                        <h5>
+                        <h4>
                             <a href="#recursos">Recursos</a>
                             <a href="#como-funciona">Como Funciona</a>
                             <a href="#sobre">Nossa História</a>
-                        </h5>
+                        </h4>
                 </div>
                 <div class="footer-section">
                     <h3>Fale Conosco</h3>         
-                        <h5>
+                        <h4>
                             <a href="https://wa.me/5543996901113?text=Gostaria de ser parceiro do Recadim">Parcerias</a>          
                             <a href="#" id="abrir-suporte-popup">Suporte</a>
                             <a href="#" id="abrir-historia-popup">Sua História</a>
-                        </h5>                 
+                        </h4>                 
                 </div>
                 <div class="footer-section">
                     <h3>Links Úteis</h3>
-                        <h5>
+                        <h4>
                             <a href="recadim-faq.html">Perguntas Frequentes</a>
                             <a href="recadim-privacy.html">Política de Privacidade</a>
                             <a href="recadim-terms.html">Termos de Uso</a>
-                        </h5>
+                        </h4>
                 </div>
             </div>
 
@@ -1259,13 +1265,14 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
             <div class="footer-bottom-redes">
-                <p>Redes Sociais:</p><br>
-                <small style="opacity: 0.7; margin-top: 05px; display: block;">
-                </small></p>
                 
+                
+                 <p>
+                    
                     <div class="social-icons">
+                        <h4>Rede Sociais:</h4>
                         <a href="https://www.instagram.com/recadimoficial" class="social-icon">
-                            <img src="img/instagram-icon.png" alt="Instagram" width="30" height="30">
+                        <img src="img/instagram-icon.png" alt="Instagram" width="30" height="30">
                         </a>
                         <a href="index.html" class="social-icon">
                             <img src="img/facebook-icon.png" alt="Facebook" width="30" height="30">
@@ -1276,18 +1283,19 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
                         <a href="https://www.tiktok.com/@recadim.oficial" class="social-icon">
                             <img src="img/tiktok-icon.png" alt="TikTok" width="30" height="30">
                         </a>
-
+                        
                     </div>
- 
-            </div>
-
-
+                </p>
 
             </div>
-            <div class="footer-bottom">
+
+
+
+            </div>
+            <div class="footer-bottom2">
                 <p>&copy; 2025 Recadim. Feito com amor para transformar palavras em momentos especiais.<br>
-                <small style="opacity: 0.7; margin-top: 10px; display: block;">
-                    Atendimento exclusivo via WhatsApp - Porque cada conversa merece atenção especial
+                <small style="opacity: 0.7; margin-top: 12px; display: block;">
+                    Atendimento exclusivo via WhatsApp
                 </small></p>
             </div>
         </div>
