@@ -76,6 +76,83 @@
 
 
 
+        /* ---- Loader com símbolo ---- */
+        .loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--color-5);
+        z-index: 9999;
+        }
+
+        .loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+        }
+
+        .loader-symbol {
+        width: 80px;
+        height: 80px;
+        border: 6px solid rgba(255,105,38,0.2);
+        border-top: 6px solid var(--color-1);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        }
+
+        .loader-icon {
+        width: 80px;
+        height: 80px;
+        animation: spin 1.2s linear infinite;
+        }
+
+        @keyframes spin {
+        to { transform: rotate(360deg); }
+        }
+
+
+
+
+
+
+        .top-logo {
+        position: relative;
+        display: block;
+        width: 220px;     /* ajuste conforme seu layout */
+        height: auto;
+        overflow: hidden;
+        }
+
+        /* “Máscara” que gera o reflexo */
+        .top-logo::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.35) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-20deg);
+        animation: shine 4s ease-in-out infinite;
+        }
+
+        /* animação */
+        @keyframes shine {
+        0%   { left: -75%; }
+        50%  { left: 125%; }
+        100% { left: 125%; }
+        }
+
+
+
+
 
 
         .nav-links {
@@ -899,6 +976,61 @@
 
 
 
+
+
+
+
+        /* Reflexo suave no logo (aplica ao wrapper .logo-link que já existe) */
+        .logo-link {
+        position: relative;       /* necessário para posicionar o pseudo-elemento */
+        display: inline-flex;     /* mantém o comportamento atual (você usa flex) */
+        align-items: center;
+        overflow: hidden;         /* corta a faixa de brilho fora do logo */
+        -webkit-mask-image: none; /* limpa possíveis masks */
+        }
+
+        /* garante que a imagem ocupe corretamente o wrapper */
+        .logo-link .logo-image {
+        display: block;
+        height: 26px; /* mantém o seu tamanho inline já usado (se quiser ajustar, altere aqui) */
+        width: auto;
+        }
+
+        /* faixa de brilho (o "reflexo" que passa pelo logo) */
+        .logo-link::after {
+        content: '';
+        position: absolute;
+        top: -30%;                 /* ligeiramente acima para cobrir diagonal */
+        left: -80%;                /* começa fora da esquerda */
+        width: 45%;                /* largura da faixa — ajuste para mais/menos efeito */
+        height: 160%;              /* altura maior que o logo para diagonal preenchida */
+        background: linear-gradient(
+            120deg,
+            rgba(255,255,255,0) 0%,
+            rgba(255,255,255,0.55) 50%,
+            rgba(255,255,255,0) 100%
+        );
+        transform: skewX(-20deg);
+        pointer-events: none;
+        filter: blur(0.4px);       /* suaviza a borda da faixa */
+        mix-blend-mode: screen;    /* opcional — deixa o brilho mais natural em fundos coloridos */
+        animation: recadim-logo-shine 3.2s ease-in-out infinite;
+        will-change: left;
+        opacity: 0.95;
+        }
+
+        /* animação que arrasta a faixa da esquerda pra fora da direita */
+        @keyframes recadim-logo-shine {
+        0%   { left: -80%; }
+        50%  { left: 120%; }
+        100% { left: 120%; }
+        }
+
+        .logo-link:hover::after { animation-play-state: paused; }
+
+
+
+
     </style>
 </head>
 
@@ -907,16 +1039,21 @@
 
 
 <body>
+
+    <!-- Loader -->
+<!--     <div class="loader" id="loader">
+    <div class="loader-symbol"></div>
+    </div>
+ -->
+
     <!-- Loader -->
     <div class="loader" id="loader">
-        <div class="loader-icon">
-            <div class="dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
+    <img src="img/simbol.svg" alt="Carregando..." class="loader-icon">
     </div>
+
+
+
+
 
 
 <!-- botao back to top -->
@@ -1292,15 +1429,22 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
     </dialog>
 
 
-
-
+   
 
     <script>
+
+        
+        window.addEventListener('load', () => {
+            document.getElementById('loader').classList.add('hidden');
+        });
+        
+
+
         // Hide loader when page loads
         window.addEventListener('load', function() {
             setTimeout(function() {
                 document.getElementById('loader').classList.add('hidden');
-            }, 500);
+            }, 1200);
         });
 
         // Smooth scrolling for navigation links
