@@ -1,0 +1,16 @@
+/* style.css */
+@font-face {
+  font-family: 'Alegreya';
+  src: url('../fonts/alegreya.woff2') format('woff2');
+  font-weight: 400 900;  /* ajuste conforme o peso */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter.woff2') format('woff2');
+  font-weight: 300 700; /* ou 300, 500, etc, conforme o arquivo */
+  font-style: normal;
+  font-display: swap;
+}
