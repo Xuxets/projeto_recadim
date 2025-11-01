@@ -798,7 +798,7 @@ dialog::backdrop {
 .heart {
     animation: christmasFall 15s linear infinite; /* Nome da animação alterado para refletir o Natal */
     color: var(--color-1); /* Ou mude para branco para efeito de neve: #fff */
-    font-size: 26px; /* Aumentado o tamanho para elementos natalinos */
+    font-size: 20px; /* Aumentado o tamanho para elementos natalinos */
     opacity: 1.0; /* Aumentado a opacidade para maior visibilidade */
     position: absolute;
     /* Mantém a cor original ou use uma cor mais natalina, como branco ou dourado */
@@ -1107,8 +1107,38 @@ dialog::backdrop {
     z-index: 10;
 }
 
+/* Card de Imagem (Post/Promoção) */
+.promo-card {
+    background-color: var(--color-5);
+}
 
- 
+.promo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 100%; /* Suaviza a imagem de fundo */
+}
+
+.promo-overlay {
+    position: absolute;
+    padding: 30px;
+    color: var(--color-2);
+    text-align: left;
+    max-width: 80%;
+}
+
+.promo-overlay h3 {
+    font-family: Alegreya, serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--color-1);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Ajuda na leitura */
+}
+
+.promo-overlay p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
 
 /* Card de Vídeo */
 .video-slider {
@@ -1214,8 +1244,8 @@ dialog::backdrop {
             <div class="heart" style="left: 30%; animation-delay: 6s;">🎅</div>
             <div class="heart" style="left: 40%; animation-delay: 2s;">☃️</div>
             <div class="heart" style="left: 50%; animation-delay: 5s;">🎁</div>
-            <div class="heart" style="left: 60%; animation-delay: 8s;">🔔</div>
-            <div class="heart" style="left: 70%; animation-delay: 1s;">🦌</div>
+            <div class="heart" style="left: 60%; animation-delay: 8s;">❄️</div>
+            <div class="heart" style="left: 70%; animation-delay: 1s;">🎄</div>
             <div class="heart" style="left: 80%; animation-delay: 4s;">🤶</div>
             <div class="heart" style="left: 90%; animation-delay: 7s;">🎄</div>
         </div>
@@ -1254,16 +1284,33 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         <div class="slider-container" id="content-slider">
             
             <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_festas.png" alt="Recadim da Semana" class="promo-image"> 
-                <div class="promo-overlay">
-                    <h3>Recadim da Semana</h3>
-                    <p>
-                        Às vezes, um pequeno gesto transforma o dia. Inspire-se com as 
-                        melhores mensagens criadas por nossos clientes esta semana e 
-                        mande a sua! 
-                    </p>
-                </div>
+                <img src="img/post_1.png" alt="Recadim da Semana" class="promo-image"> 
             </div>
+
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_2.png" alt="Recadim da Semana" class="promo-image"> 
+            </div>        
+            
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_3.png" alt="Recadim da Semana" class="promo-image"> 
+            </div>             
+
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_4.png" alt="Recadim da Semana" class="promo-image"> 
+            </div>             
+            
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_5.png" alt="Recadim da Semana" class="promo-image"> 
+            </div> 
+
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_6.png" alt="Recadim da Semana" class="promo-image"> 
+            </div> 
+
+            <div class="slider-item promo-card active" data-type="image">
+                <img src="img/post_8.png" alt="Recadim da Semana" class="promo-image"> 
+            </div> 
+
 
             <div class="slider-item video-slider" data-type="video" id="video-slider-item">
                 <iframe 
@@ -1535,13 +1582,13 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
                     
                     <div class="social-icons">
                         <h4>Rede Sociais:</h4>
-                        <a href="https://www.instagram.com/recadimoficial" class="social-icon">
+                        <a href="https://www.instagram.com/recadim.oficial" class="social-icon">
                         <img src="img/instagram-icon.png" alt="Instagram" width="30" height="30">
                         </a>
-                        <a href="index.html" class="social-icon">
+                        <a href="https://www.facebook.com/profile.php?id=61576614112474" class="social-icon">
                             <img src="img/facebook-icon.png" alt="Facebook" width="30" height="30">
                         </a>
-                        <a href="index.html" class="social-icon">
+                        <a href="https://www.youtube.com/@Recadim-z1l" class="social-icon">
                             <img src="img/youtube-icon.png" alt="YouTube" width="30" height="30">
                         </a>
                         <a href="https://www.tiktok.com/@recadim.oficial" class="social-icon">
@@ -1865,15 +1912,13 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 /* SCRIPT DO SLIDE VIDEO E FOTOS */
 
-/* SCRIPT DO SLIDE VIDEO E FOTOS */
-
 document.addEventListener("DOMContentLoaded", function() {
     // ... (Seu código existente aqui) ...
 /* --- SCRIPT DO SLIDER ROTATIVO MINIMALISTA --- */
     const slider = document.getElementById('content-slider');
     const items = slider.querySelectorAll('.slider-item');
     let currentIndex = 0;
-    const intervalTime = 10000; // Troca a cada 10 segundos
+    const intervalTime = 6000; // Troca a cada 6 segundos
     let slideInterval;
 
     const videoSlider = document.getElementById('video-slider-item');
