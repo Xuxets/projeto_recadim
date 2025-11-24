@@ -13,7 +13,6 @@
  
     <style>
 
-
 /* Definições de Fontes */
 @font-face {
     font-display: swap;
@@ -50,6 +49,10 @@
     --neutral-white: #fff;
     --neutral-light: #f8fafc;
     --neutral-medium: #64748b;
+
+       /* Cores de Natal para a borda */
+    --xmas-red: #d62828;
+    --xmas-green: #2a9d8f;
 }
 
 /* Estilos Globais do Corpo */
@@ -86,6 +89,32 @@ body {
     right: 0;
     top: 0;
 }
+
+
+/* --- EFEITO DE NEVE (SNOWFLAKES) APENAS NO HERO --- */
+.snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1; /* Fica acima do fundo, mas abaixo do texto */
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: #cbd5e1; /* Cor suave da neve */
+    font-size: 1em;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(105vh) rotate(360deg); }
+}
+
 
 /* Navegação */
 .nav {
@@ -587,6 +616,26 @@ dialog::backdrop {
     background: var(--color-2);
     color: var(--neutral-white);
     padding: 60px 20px 30px;
+}
+
+
+/* --- DECORAÇÃO DE NATAL DO FOOTER --- */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 6px;
+    background: repeating-linear-gradient(
+        45deg, 
+        var(--xmas-red), 
+        var(--xmas-red) 10px, 
+        var(--neutral-white) 10px, 
+        var(--neutral-white) 20px, 
+        var(--xmas-green) 20px, 
+        var(--xmas-green) 30px, 
+        var(--neutral-white) 30px, 
+        var(--neutral-white) 40px
+    );
+    z-index: 10;
 }
 
 .footer-content {
@@ -1238,17 +1287,10 @@ dialog::backdrop {
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="floating-hearts">
-            <div class="heart" style="left: 10%; animation-delay: 0s;">🎄</div> 
-            <div class="heart" style="left: 20%; animation-delay: 3s;">❄️</div>
-            <div class="heart" style="left: 30%; animation-delay: 6s;">🎅</div>
-            <div class="heart" style="left: 40%; animation-delay: 2s;">☃️</div>
-            <div class="heart" style="left: 50%; animation-delay: 5s;">🎁</div>
-            <div class="heart" style="left: 60%; animation-delay: 8s;">❄️</div>
-            <div class="heart" style="left: 70%; animation-delay: 1s;">🎄</div>
-            <div class="heart" style="left: 80%; animation-delay: 4s;">🤶</div>
-            <div class="heart" style="left: 90%; animation-delay: 7s;">🎄</div>
+        <!-- Substituído os corações flutuantes por um container de neve no topo -->
+        <div class="snow-container" id="snowContainer">
         </div>
+
         <div class="hero-content">
             <h1>Seu <span>Amigo Digital</span> de Sempre</h1>
             <p class="hero-subtitle">"O lugar do que nunca foi dito"</p>
@@ -1711,6 +1753,40 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
    
 
     <script>
+
+
+        // LÓGICA DE GERAÇÃO DA NEVE
+        function createSnowflakes() {
+            const container = document.getElementById('snowContainer');
+            if (!container) return; // Segurança caso o ID mude
+            
+            const flakeCount = 40; // Quantidade de flocos para não pesar
+            
+            for(let i = 0; i < flakeCount; i++) {
+                const flake = document.createElement('div');
+                flake.classList.add('snowflake');
+                // Caracteres variados de neve
+                flake.innerHTML = ['❄', '❅', '❆', '•'][Math.floor(Math.random() * 4)];
+                
+                // Posição aleatória na largura
+                flake.style.left = Math.random() * 100 + '%';
+                
+                // Duração da queda aleatória entre 5s e 12s
+                flake.style.animationDuration = (Math.random() * 7 + 5) + 's';
+                
+                // Tamanho aleatório
+                flake.style.fontSize = (Math.random() * 12 + 10) + 'px';
+                
+                // Atraso aleatório para não cair tudo de uma vez
+                flake.style.animationDelay = Math.random() * 5 + 's';
+                
+                container.appendChild(flake);
+            }
+        }
+
+
+
+
 
         
         window.addEventListener('load', () => {
