@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <script>
+        window.location.href = "maintenance.html";
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perguntas Frequentes - Recadim</title>
@@ -9,7 +13,273 @@
     <link rel="preload" href="fonts/alegreya.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
     <style>
-        *{box-sizing:border-box;margin:0;padding:0}:root{--color-1:#ff6926;--color-2:#1e293b;--color-3:#0f766e;--color-4:#10b981;--color-5:#fdf6ec;--color-6:#dc2626}body{background:linear-gradient(135deg,var(--color-5) 0,#f8fafc 100%);color:var(--color-2);font-family:Inter,sans-serif;min-height:100vh}.container{margin:0 auto;max-width:900px;padding:40px 20px}.header{animation:fadeInDown .8s ease;margin-bottom:50px;text-align:center}.logo-link{flex-direction:row;gap:15px;margin-bottom:30px}.back-to-top,.logo-link{align-items:center;display:flex;justify-content:center}.back-to-top{background-color:var(--color-1);border-radius:50%;bottom:20px;color:#fff;font-size:1.5rem;height:50px;opacity:0;position:fixed;right:20px;text-decoration:none;transition:opacity .3s,visibility .3s;visibility:hidden;width:50px;z-index:1000}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background-color:#ff5515}h1{color:var(--color-2);font-family:Alegreya,serif;font-size:3rem;margin-bottom:15px}.subtitle{color:var(--color-3);font-size:1.2rem;opacity:.9}.faq-container{display:flex;flex-direction:column;gap:20px}.faq-item{animation:fadeInUp .8s ease;animation-fill-mode:both;background:#fff;border-radius:15px;box-shadow:0 3px 15px rgba(0,0,0,.08);overflow:hidden;transition:all .3s ease}.faq-item:first-child{animation-delay:.1s}.faq-item:nth-child(2){animation-delay:.2s}.faq-item:nth-child(3){animation-delay:.3s}.faq-item:nth-child(4){animation-delay:.4s}.faq-item:nth-child(5){animation-delay:.5s}.faq-item:nth-child(6){animation-delay:.6s}.faq-item:nth-child(7){animation-delay:.7s}.faq-item:nth-child(8){animation-delay:.8s}.faq-item:nth-child(9){animation-delay:.9s}.faq-question{align-items:center;background:#fff;cursor:pointer;display:flex;justify-content:space-between;padding:25px 30px;transition:all .3s ease}.faq-question:hover{background:rgba(255,105,38,.05)}.faq-question h3{color:var(--color-2);flex:1;font-family:Alegreya,serif;font-size:1.3rem;margin:0}.faq-icon{align-items:center;background:var(--color-1);border-radius:50%;color:#fff;display:flex;font-size:1.2rem;height:30px;justify-content:center;transition:transform .3s ease;width:30px}.faq-item.active .faq-icon{background:var(--color-3);transform:rotate(45deg)}.faq-answer{background:hsla(35,89%,96%,.5);max-height:0;overflow:hidden;transition:max-height .3s ease}.faq-item.active .faq-answer{max-height:600px}.faq-answer-content{color:var(--color-2);line-height:1.8;opacity:.85;padding:20px 30px 25px}.faq-answer-content ul{list-style-position:inside;list-style-type:disc;margin:10px 0 10px 20px;padding-left:20px}.faq-answer-content li{line-height:1.6;margin-bottom:6px}.back-btn{align-items:center;background:var(--color-1);border-radius:25px;box-shadow:0 4px 15px rgba(255,105,38,.3);color:#fff;display:inline-flex;font-weight:600;gap:10px;margin-bottom:40px;margin-top:60px;padding:12px 25px;text-decoration:none;transition:all .3s ease}.back-btn:hover{box-shadow:0 6px 20px rgba(255,105,38,.4);transform:translateY(-2px)}@keyframes fadeInDown{0%{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}@keyframes fadeInUp{0%{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}@media (max-width:768px){h1{font-size:2.2rem}.faq-question h3{font-size:1.1rem}.faq-answer-content,.faq-question{padding:20px}}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --color-1: #ff6926;
+            --color-2: #1e293b;
+            --color-3: #0f766e;
+            --color-4: #10b981;
+            --color-5: #fdf6ec;
+            --color-6: #dc2626
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--color-5) 0, #f8fafc 100%);
+            color: var(--color-2);
+            font-family: Inter, sans-serif;
+            min-height: 100vh
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 900px;
+            padding: 40px 20px
+        }
+
+        .header {
+            animation: fadeInDown .8s ease;
+            margin-bottom: 50px;
+            text-align: center
+        }
+
+        .logo-link {
+            flex-direction: row;
+            gap: 15px;
+            margin-bottom: 30px
+        }
+
+        .back-to-top,
+        .logo-link {
+            align-items: center;
+            display: flex;
+            justify-content: center
+        }
+
+        .back-to-top {
+            background-color: var(--color-1);
+            border-radius: 50%;
+            bottom: 20px;
+            color: #fff;
+            font-size: 1.5rem;
+            height: 50px;
+            opacity: 0;
+            position: fixed;
+            right: 20px;
+            text-decoration: none;
+            transition: opacity .3s, visibility .3s;
+            visibility: hidden;
+            width: 50px;
+            z-index: 1000
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .back-to-top:hover {
+            background-color: #ff5515
+        }
+
+        h1 {
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 3rem;
+            margin-bottom: 15px
+        }
+
+        .subtitle {
+            color: var(--color-3);
+            font-size: 1.2rem;
+            opacity: .9
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        .faq-item {
+            animation: fadeInUp .8s ease;
+            animation-fill-mode: both;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, .08);
+            overflow: hidden;
+            transition: all .3s ease
+        }
+
+        .faq-item:first-child {
+            animation-delay: .1s
+        }
+
+        .faq-item:nth-child(2) {
+            animation-delay: .2s
+        }
+
+        .faq-item:nth-child(3) {
+            animation-delay: .3s
+        }
+
+        .faq-item:nth-child(4) {
+            animation-delay: .4s
+        }
+
+        .faq-item:nth-child(5) {
+            animation-delay: .5s
+        }
+
+        .faq-item:nth-child(6) {
+            animation-delay: .6s
+        }
+
+        .faq-item:nth-child(7) {
+            animation-delay: .7s
+        }
+
+        .faq-item:nth-child(8) {
+            animation-delay: .8s
+        }
+
+        .faq-item:nth-child(9) {
+            animation-delay: .9s
+        }
+
+        .faq-question {
+            align-items: center;
+            background: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 30px;
+            transition: all .3s ease
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 105, 38, .05)
+        }
+
+        .faq-question h3 {
+            color: var(--color-2);
+            flex: 1;
+            font-family: Alegreya, serif;
+            font-size: 1.3rem;
+            margin: 0
+        }
+
+        .faq-icon {
+            align-items: center;
+            background: var(--color-1);
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            font-size: 1.2rem;
+            height: 30px;
+            justify-content: center;
+            transition: transform .3s ease;
+            width: 30px
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--color-3);
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            background: hsla(35, 89%, 96%, .5);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 600px
+        }
+
+        .faq-answer-content {
+            color: var(--color-2);
+            line-height: 1.8;
+            opacity: .85;
+            padding: 20px 30px 25px
+        }
+
+        .faq-answer-content ul {
+            list-style-position: inside;
+            list-style-type: disc;
+            margin: 10px 0 10px 20px;
+            padding-left: 20px
+        }
+
+        .faq-answer-content li {
+            line-height: 1.6;
+            margin-bottom: 6px
+        }
+
+        .back-btn {
+            align-items: center;
+            background: var(--color-1);
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, .3);
+            color: #fff;
+            display: inline-flex;
+            font-weight: 600;
+            gap: 10px;
+            margin-bottom: 40px;
+            margin-top: 60px;
+            padding: 12px 25px;
+            text-decoration: none;
+            transition: all .3s ease
+        }
+
+        .back-btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 105, 38, .4);
+            transform: translateY(-2px)
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @media (max-width:768px) {
+            h1 {
+                font-size: 2.2rem
+            }
+
+            .faq-question h3 {
+                font-size: 1.1rem
+            }
+
+            .faq-answer-content,
+            .faq-question {
+                padding: 20px
+            }
+        }
     </style>
 </head>
 
@@ -21,12 +291,12 @@
             <a href="index.html" class="logo-link">
                 <img src="img/fivecon.svg" alt="Logo da Recadim" class="logo-image" style="height: 60px;">
             </a>
-            
- <!-- html do botão back to top        -->
+
+            <!-- html do botão back to top        -->
             <a href="#" class="back-to-top" id="backToTopBtn">
                 ▲
             </a>
-            
+
 
             <h1>Perguntas Frequentes</h1>
             <p class="subtitle">Tire suas dúvidas sobre o Recadim</p>
@@ -40,7 +310,10 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        O Recadim é um serviço personalizado que ajuda você a criar e enviar mensagens especiais pelo WhatsApp. Transformamos suas palavras em pequenas obras de arte digitais, feitas sob medida para cada ocasião. É como um correio elegante e moderno, onde cada mensagem recebe atenção, criatividade e carinho.
+                        O Recadim é um serviço personalizado que ajuda você a criar e enviar mensagens especiais pelo
+                        WhatsApp. Transformamos suas palavras em pequenas obras de arte digitais, feitas sob medida para
+                        cada ocasião. É como um correio elegante e moderno, onde cada mensagem recebe atenção,
+                        criatividade e carinho.
                     </div>
                 </div>
             </div>
@@ -52,7 +325,10 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Como funciona o processo de criação? É bem simples! Você nos chama no WhatsApp e conta o que gostaria de dizer, para quem e qual é a ocasião. Juntos, vamos lapidando as palavras até encontrar o tom perfeito. Quando tudo estiver do seu jeito, nós cuidamos do envio, no momento especial que você escolher.
+                        Como funciona o processo de criação? É bem simples! Você nos chama no WhatsApp e conta o que
+                        gostaria de dizer, para quem e qual é a ocasião. Juntos, vamos lapidando as palavras até
+                        encontrar o tom perfeito. Quando tudo estiver do seu jeito, nós cuidamos do envio, no momento
+                        especial que você escolher.
                     </div>
                 </div>
             </div>
@@ -64,7 +340,10 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Na maioria das vezes, você consegue criar sua mensagem em poucos minutos — às vezes até em 5 minutinhos. Mas, se preferir conversar, refletir ou simplesmente colocar para fora aquilo que nunca foi dito, o Recadim é esse lugar. Aqui você pode escrever rápido ou viver o processo com calma, no seu próprio tempo.
+                        Na maioria das vezes, você consegue criar sua mensagem em poucos minutos — às vezes até em 5
+                        minutinhos. Mas, se preferir conversar, refletir ou simplesmente colocar para fora aquilo que
+                        nunca foi dito, o Recadim é esse lugar. Aqui você pode escrever rápido ou viver o processo com
+                        calma, no seu próprio tempo.
                     </div>
                 </div>
             </div>
@@ -76,7 +355,9 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Sim! Você pode escolher exatamente quando sua mensagem será entregue. Seja à meia-noite de um aniversário, no horário de um evento especial ou simplesmente quando você souber que a pessoa estará disponível para receber essa surpresa especial.
+                        Sim! Você pode escolher exatamente quando sua mensagem será entregue. Seja à meia-noite de um
+                        aniversário, no horário de um evento especial ou simplesmente quando você souber que a pessoa
+                        estará disponível para receber essa surpresa especial.
                     </div>
                 </div>
             </div>
@@ -88,7 +369,10 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Criamos mensagens para todas as ocasiões: aniversários, declarações de amor, pedidos de desculpas, agradecimentos, homenagens, mensagens motivacionais… e até aquele flerte anônimo que você quer mandar sem se entregar de cara! 😏 Cada Recadim é único, feito sob medida para o seu sentimento e objetivo — seja divertido, carinhoso, romântico ou só pra arrancar um sorriso.
+                        Criamos mensagens para todas as ocasiões: aniversários, declarações de amor, pedidos de
+                        desculpas, agradecimentos, homenagens, mensagens motivacionais… e até aquele flerte anônimo que
+                        você quer mandar sem se entregar de cara! 😏 Cada Recadim é único, feito sob medida para o seu
+                        sentimento e objetivo — seja divertido, carinhoso, romântico ou só pra arrancar um sorriso.
                     </div>
                 </div>
             </div>
@@ -98,25 +382,29 @@
                     <h3>Como funciona o pagamento?</h3>
                     <span class="faq-icon">+</span>
                 </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            No Recadim, cada mensagem enviada custa <strong>1 crédito</strong>. Para facilitar, você pode recarregar seus créditos de forma prática e segura via <strong>PIX</strong>:
-                           
-                            <ul>
-                        
-                                <li><strong>1 crédito</strong> — R$ 3,49</li>                                
-                                <li><strong>5 créditos</strong> — R$ 13,90</li>
-                                <li><strong>10 créditos</strong> — R$ 24,90</li>
-                            </ul>   
-                            
-                            
-                            <p>Você só realiza o pagamento <strong>após aprovar sua mensagem final</strong>, garantindo que tudo saia exatamente do jeito que você quer.</p>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        No Recadim, cada mensagem enviada custa <strong>1 crédito</strong>. Para facilitar, você pode
+                        recarregar seus créditos de forma prática e segura via <strong>PIX</strong>:
 
-                            <p>💡 Dica: recarregar pacotes maiores ajuda você a enviar mais mensagens e espalhar carinho sem se preocupar a cada envio.</p>
+                        <ul>
 
-                            <p>Quer começar agora? Basta entrar em contato pelo <strong>WhatsApp</strong> e nossa equipe te guia na recarga e na criação da sua mensagem.</p>
-                      
-                        </div>
+                            <li><strong>1 crédito</strong> — R$ 3,49</li>
+                            <li><strong>5 créditos</strong> — R$ 13,90</li>
+                            <li><strong>10 créditos</strong> — R$ 24,90</li>
+                        </ul>
+
+
+                        <p>Você só realiza o pagamento <strong>após aprovar sua mensagem final</strong>, garantindo que
+                            tudo saia exatamente do jeito que você quer.</p>
+
+                        <p>💡 Dica: recarregar pacotes maiores ajuda você a enviar mais mensagens e espalhar carinho sem
+                            se preocupar a cada envio.</p>
+
+                        <p>Quer começar agora? Basta entrar em contato pelo <strong>WhatsApp</strong> e nossa equipe te
+                            guia na recarga e na criação da sua mensagem.</p>
+
+                    </div>
                 </div>
 
             </div>
@@ -128,7 +416,9 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Claro! Você sempre verá uma prévia da mensagem antes do envio. Fazemos ajustes até que fique exatamente como você imaginou. Sua aprovação é essencial antes de enviarmos para a pessoa especial.
+                        Claro! Você sempre verá uma prévia da mensagem antes do envio. Fazemos ajustes até que fique
+                        exatamente como você imaginou. Sua aprovação é essencial antes de enviarmos para a pessoa
+                        especial.
                     </div>
                 </div>
             </div>
@@ -140,8 +430,9 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Você pode alterar o horário de envio com até <strong>1 hora de antecedência</strong>. 
-                        <p>Se desejar cancelar a mensagem, o crédito utilizado será <strong>devolvido para sua conta</strong> para que você possa usar em outra mensagem, sem perda de saldo.</p>
+                        Você pode alterar o horário de envio com até <strong>1 hora de antecedência</strong>.
+                        <p>Se desejar cancelar a mensagem, o crédito utilizado será <strong>devolvido para sua
+                                conta</strong> para que você possa usar em outra mensagem, sem perda de saldo.</p>
                     </div>
 
                 </div>
@@ -156,8 +447,12 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>Nós respeitamos totalmente a privacidade de quem recebe as mensagens. Os dados fornecidos (como nome e número de WhatsApp) são usados apenas para enviar a notificação e entregar o Recadim.</p>
-                        <p>O destinatário recebe um aviso antes de visualizar o conteúdo e pode escolher se deseja abrir ou recusar. Se ele optar por não receber, a mensagem não será exibida e os dados são excluídos automaticamente em até <strong>24 horas</strong>.</p>
+                        <p>Nós respeitamos totalmente a privacidade de quem recebe as mensagens. Os dados fornecidos
+                            (como nome e número de WhatsApp) são usados apenas para enviar a notificação e entregar o
+                            Recadim.</p>
+                        <p>O destinatário recebe um aviso antes de visualizar o conteúdo e pode escolher se deseja abrir
+                            ou recusar. Se ele optar por não receber, a mensagem não será exibida e os dados são
+                            excluídos automaticamente em até <strong>24 horas</strong>.</p>
                         <p>Esses dados nunca são compartilhados com terceiros nem usados para qualquer outro fim.</p>
                     </div>
 
@@ -186,12 +481,12 @@
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
                 const wasActive = faqItem.classList.contains('active');
-                
+
                 // Fecha todas as outras perguntas
                 document.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('active');
                 });
-                
+
                 // Abre a pergunta clicada se não estava ativa
                 if (!wasActive) {
                     faqItem.classList.add('active');
@@ -199,8 +494,8 @@
             });
         });
 
-                // Adiciona o botão de voltar ao topo
-        window.addEventListener('scroll', function() {
+        // Adiciona o botão de voltar ao topo
+        window.addEventListener('scroll', function () {
             const backToTopBtn = document.getElementById('backToTopBtn');
             if (window.scrollY > 300) { // Mostra o botão após rolar 300px
                 backToTopBtn.classList.add('show');
@@ -210,7 +505,7 @@
         });
 
         // Faz a rolagem suave ao topo ao clicar no botão
-        document.getElementById('backToTopBtn').addEventListener('click', function(e) {
+        document.getElementById('backToTopBtn').addEventListener('click', function (e) {
             e.preventDefault();
             window.scrollTo({
                 top: 0,
@@ -219,4 +514,5 @@
         });
     </script>
 </body>
+
 </html>

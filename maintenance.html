@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/fivecon.svg">
+    <title>Recadim - Em Manutenção</title>
+    <style>
+        /* Importando fontes do projeto */
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('fonts/alegreya.woff2') format('woff2');
+            font-weight: 400 900;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/inter.woff2') format('woff2');
+            font-weight: 300 700;
+            font-display: swap;
+        }
+
+        :root {
+            --color-1: #ff6926;
+            /* Laranja */
+            --color-2: #1e293b;
+            /* Azul Escuro */
+            --color-5: #fdf6ec;
+            /* Fundo Claro */
+            --neutral-medium: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--color-5);
+            color: var(--color-2);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            max-width: 200px;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Alegreya', serif;
+            font-size: 1.9rem;
+            color: var(--color-2);
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--neutral-medium);
+            line-height: 1.2;
+            max-width: 80%;
+        }
+
+        /* Animação das Engrenagens */
+        .gears-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 10px 0;
+        }
+
+        .gear {
+            position: absolute;
+            fill: var(--neutral-medium);
+            opacity: 0.8;
+        }
+
+        .gear-large {
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 0;
+            fill: var(--color-1);
+            /* Laranja */
+            animation: rotate-right 8s linear infinite;
+        }
+
+        .gear-small {
+            width: 50px;
+            height: 50px;
+            bottom: 10px;
+            right: 0;
+            fill: var(--color-2);
+            /* Azul */
+            animation: rotate-left 5s linear infinite;
+        }
+
+        @keyframes rotate-right {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-left {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Logo -->
+        <img src="img/top-logo.svg" alt="Recadim Logo" class="logo">
+
+
+
+        <!-- Animação de Engrenagens SVG -->
+        <div class="gears-container">
+            <!-- Engrenagem Grande -->
+            <svg class="gear gear-large" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 1L12 4M12 20L12 23M4.22 4.22L6.34 6.34M17.66 17.66L19.78 19.78M1 12L4 12M20 12L23 12M4.22 19.78L6.34 17.66M17.66 6.34L19.78 4.22"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <!-- Simplificando para um ícone visual de engrenagem preenchido -->
+                <path
+                    d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.43l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+            </svg>
+
+            <!-- Engrenagem Pequena -->
+            <svg class="gear gear-small" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.43l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+            </svg>
+        </div>
+
+        <h1>Estamos em Manutenção</h1>
+        <p>Voltaremos em breve com novidades!</p>
+
+    </div>
+
+</body>
+
+</html>

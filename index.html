@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <script>
+        window.location.href = "maintenance.html";
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/fivecon.svg">
@@ -10,1230 +14,1170 @@
     <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 
 
- 
+
     <style>
-
-/* Definições de Fontes */
-@font-face {
-    font-display: swap;
-    font-family: Alegreya;
-    font-style: normal;
-    font-weight: 400 900;
-    src: url(../fonts/alegreya.woff2) format("woff2");
-}
-
-@font-face {
-    font-display: swap;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 300 700;
-    src: url(../fonts/inter.woff2) format("woff2");
-}
-
-/* Reset Básico */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* Variáveis CSS */
-:root {
-    --color-1: #ff6926;
-    --color-2: #1e293b;
-    --color-3: #0f766e;
-    --color-4: #10b981;
-    --color-5: #fdf6ec;
-    --color-6: #dc2626;
-    --color-7: #8b5cf6;
-    --neutral-white: #fff;
-    --neutral-light: #f8fafc;
-    --neutral-medium: #64748b;
-
-       /* Cores de Natal para a borda */
-    --xmas-red: #d62828;
-    --xmas-green: #2a9d8f;
-}
-
-/* Estilos Globais do Corpo */
-body {
-    background: var(--color-5);
-    color: var(--color-2);
-    font-family: Inter, sans-serif;
-    overflow-x: hidden;
-}
-
-/* Seção Hero */
-.hero {
-    align-items: center;
-    background: linear-gradient(0deg, var(--color-5) 0, #f8fafc 100%);
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-}
-
-.hero:before {
-    background: radial-gradient(circle at 30% 20%, rgba(255, 105, 38, .1) 0, transparent 0), radial-gradient(circle at 70% 80%, rgba(16, 185, 129, .08) 0, transparent 20%);
-    bottom: 0;
-    content: "";
-    pointer-events: none;
-    position: absolute;
-}
-
-.hero:before,
-.nav {
-    left: 0;
-    right: 0;
-    top: 0;
-}
-
-
-/* --- EFEITO DE NEVE (SNOWFLAKES) APENAS NO HERO --- */
-.snow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1; /* Fica acima do fundo, mas abaixo do texto */
-}
-
-.snowflake {
-    position: absolute;
-    top: -10px;
-    color: #cbd5e1; /* Cor suave da neve */
-    font-size: 1em;
-    opacity: 0.8;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to { transform: translateY(105vh) rotate(360deg); }
-}
-
-
-/* Navegação */
-.nav {
-    align-items: center;
-    background: hsla(36, 93%, 94%, .98);
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    position: fixed;
-    transition: all .3s ease;
-    z-index: 1000;
-}
-
-.nav.scrolled {
-    backdrop-filter: blur(10px);
-    background: var(--neutral-white);
-    box-shadow: 0 2px 20px rgba(30, 41, 59, .08);
-}
-
-/* Loader */
-.loader {
-    inset: 0;
-}
-
-.loader.hidden {
-    transition: opacity .5s ease;
-}
-
-.loader-symbol {
-    animation: spin 1s linear infinite;
-    border: 6px solid rgba(255, 105, 38, .2);
-    border-radius: 50%;
-    border-top: 6px solid var(--color-1);
-    height: 80px;
-    width: 80px;
-}
-
-.loader-icon {
-    animation: spin 1.2s linear infinite;
-}
-
-/* Keyframes - spin */
-@keyframes spin {
-    to {
-        transform: rotate(1turn);
-    }
-}
-
-/* Diálogo/Modal */
-dialog {
-    background: var(--neutral-white);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
-    display: none;
-    z-index: 1000;
-}
-
-dialog[open] {
-    display: block;
-}
-
-dialog::backdrop {
-    background: rgba(30, 41, 59, .6);
-}
-
-/* Conteúdo do Popup */
-.popup-content button {
-    transition: .3s;
-}
-
-.popup-content button[type=submit] {
-    background: var(--color-1);
-}
-
-.popup-content button[type=button] {
-    background: var(--neutral-medium);
-}
-
-/* Logo */
-.top-logo:after {
-    animation: shine 4s ease-in-out infinite;
-    background: linear-gradient(120deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0));
-    content: "";
-    height: 100%;
-    left: -75%;
-    position: absolute;
-    top: 0;
-    transform: skewX(-20deg);
-    width: 50%;
-}
-
-/* Keyframes - shine */
-@keyframes shine {
-    0% {
-        left: -75%;
-    }
-
-    50% {
-        left: 125%;
-    }
-
-    to {
-        left: 125%;
-    }
-}
-
-/* Links de Navegação */
-.nav-links {
-    align-items: center;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-link {
-    border-radius: 20px;
-    color: var(--color-2);
-    font-size: .95rem;
-    font-weight: 500;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: all .3s ease;
-}
-
-.nav-link:hover {
-    background: rgba(255, 105, 38, .1);
-    color: var(--color-1);
-}
-
-/* Botão CTA na Navegação */
-.cta-nav-btn {
-    background: var(--color-1);
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(255, 105, 38, .3);
-    color: var(--neutral-white);
-    font-size: .95rem;
-    font-weight: 600;
-    padding: 12px 24px;
-    text-decoration: none;
-    transition: all .3s ease;
-}
-
-.cta-nav-btn:hover {
-    background: #ff5515;
-    box-shadow: 0 8px 25px rgba(255, 105, 38, .4);
-    transform: translateY(-2px);
-}
-
-/* Conteúdo Hero */
-.hero-content {
-    max-width: 900px;
-    padding-top: 80px;
-    z-index: 50;
-}
-
-.hero h1 {
-    animation: slideUp 1s ease-out;
-    color: var(--color-2);
-    font-family: Alegreya, serif;
-    font-size: 4rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-
-.hero h1 span {
-    color: var(--color-1);
-}
-
-.hero-subtitle {
-    animation: slideUp 1s ease-out .2s both;
-    color: var(--color-3);
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 30px;
-}
-
-.hero-description {
-    animation: slideUp 1s ease-out .4s both;
-    color: var(--color-2);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 650px;
-    opacity: .8;
-}
-
-/* Botões CTA */
-.cta-buttons {
-    animation: slideUp 1s ease-out .6s both;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.btn-primary {
-    align-items: center;
-    background: var(--color-1);
-    border-radius: 30px;
-    box-shadow: 0 6px 20px rgba(255, 105, 38, .3);
-    color: var(--neutral-white);
-    display: inline-flex;
-    font-size: 1.05rem;
-    font-weight: 600;
-    gap: 8px;
-    padding: 16px 35px;
-    text-decoration: none;
-    transition: all .3s ease;
-}
-
-.btn-primary:hover {
-    background: #ff5515;
-    box-shadow: 0 10px 30px rgba(255, 105, 38, .4);
-    transform: translateY(-3px);
-}
-
-.btn-secondary {
-    align-items: center;
-    background: var(--neutral-white);
-    border: 2px solid var(--color-4);
-    border-radius: 30px;
-    color: var(--color-3);
-    display: inline-flex;
-    font-size: 1.05rem;
-    font-weight: 600;
-    gap: 8px;
-    padding: 16px 35px;
-    text-decoration: none;
-    transition: all .3s ease;
-}
-
-.btn-secondary:hover {
-    background: var(--color-4);
-    border-color: var(--color-4);
-    color: var(--neutral-white);
-    transform: translateY(-3px);
-}
-
-/* Keyframes - slideUp */
-@keyframes slideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Seção Features */
-.features {
-    background: var(--neutral-white);
-    padding: 100px 20px;
-    position: relative;
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-.section-title {
-    color: var(--color-2);
-    font-family: Alegreya, serif;
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.section-subtitle {
-    color: var(--color-3);
-    font-size: 1.2rem;
-    margin-bottom: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 600px;
-    text-align: center;
-}
-
-.features-grid {
-    display: grid;
-    gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
-.feature-card {
-    background: var(--color-5);
-    border: 2px solid transparent;
-    border-radius: 20px;
-    padding: 40px 30px;
-    text-align: center;
-    transition: all .3s ease;
-}
-
-.feature-card:hover {
-    border-color: var(--color-1);
-    box-shadow: 0 15px 40px rgba(255, 105, 38, .1);
-    transform: translateY(-8px);
-}
-
-.feature-icon {
-    align-items: center;
-    background: linear-gradient(135deg, var(--color-1) 0, var(--color-6) 100%);
-    border-radius: 50%;
-    color: var(--neutral-white);
-    display: flex;
-    font-size: 1.8rem;
-    height: 70px;
-    justify-content: center;
-    margin: 0 auto 25px;
-    width: 70px;
-}
-
-.feature-title {
-    color: var(--color-2);
-    font-family: Alegreya, serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.feature-description {
-    color: var(--color-2);
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: .8;
-}
-
-/* Seção About */
-.about {
-    background: linear-gradient(135deg, var(--color-3) 0, var(--color-4) 100%);
-    color: var(--neutral-white);
-    overflow: hidden;
-    padding: 100px 20px;
-    position: relative;
-    text-align: center;
-}
-
-.about:before {
-    animation: rotate 30s linear infinite;
-    background: radial-gradient(circle, hsla(0, 0%, 100%, .05) 0, transparent 70%);
-    content: "";
-    height: 200%;
-    position: absolute;
-    right: -50%;
-    top: -50%;
-    width: 200%;
-}
-
-/* Keyframes - rotate */
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(1turn);
-    }
-}
-
-.about .section-title {
-    color: var(--neutral-white);
-}
-
-.about .section-subtitle {
-    color: hsla(0, 0%, 100%, .9);
-}
-
-.about-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin: 0 auto 40px;
-    max-width: 800px;
-}
-
-.about-content,
-.stats {
-    position: relative;
-    z-index: 1;
-}
-
-/* Estatísticas */
-.stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 80px;
-    justify-content: center;
-    margin-top: 60px;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    color: var(--color-5);
-    display: block;
-    font-family: Alegreya, serif;
-    font-size: 3rem;
-    font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
-}
-
-.stat-label {
-    color: hsla(0, 0%, 100%, .9);
-    font-size: 1rem;
-    margin-top: 5px;
-}
-
-/* Seção How It Works */
-.how-it-works {
-    background: var(--color-5);
-    padding: 100px 20px;
-}
-
-.steps-container {
-    display: grid;
-    gap: 30px;
-    margin: 0 auto;
-    max-width: 900px;
-}
-
-.step-card {
-    align-items: start;
-    background: var(--neutral-white);
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(30, 41, 59, .05);
-    display: flex;
-    gap: 25px;
-    padding: 30px;
-    transition: all .3s ease;
-}
-
-.step-card:hover {
-    box-shadow: 0 8px 30px rgba(255, 105, 38, .15);
-    transform: translateX(10px);
-}
-
-.step-number {
-    align-items: center;
-    background: var(--color-1);
-    border-radius: 50%;
-    color: var(--neutral-white);
-    display: flex;
-    flex-shrink: 0;
-    font-size: 1.3rem;
-    font-weight: 700;
-    height: 50px;
-    justify-content: center;
-    width: 50px;
-}
-
-.step-content h4 {
-    color: var(--color-2);
-    font-family: Alegreya, serif;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-}
-
-.step-content p {
-    color: var(--color-2);
-    line-height: 1.6;
-    opacity: .8;
-}
-
-/* Seção Final CTA */
-.final-cta {
-    background: linear-gradient(135deg, var(--neutral-white) 0, var(--color-5) 100%);
-    padding: 180px 20px;
-    text-align: center;
-}
-
-.final-cta .section-title {
-    color: var(--color-2);
-    margin-bottom: 30px;
-}
-
-.final-cta .section-subtitle {
-    color: var(--color-3);
-    font-size: 1.3rem;
-    margin-bottom: 50px;
-}
-
-.final-cta-note {
-    color: var(--color-2);
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: .8;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Rodapé (Footer) */
-.footer {
-    background: var(--color-2);
-    color: var(--neutral-white);
-    padding: 60px 20px 30px;
-}
-
-
-/* --- DECORAÇÃO DE NATAL DO FOOTER --- */
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 6px;
-    background: repeating-linear-gradient(
-        45deg, 
-        var(--xmas-red), 
-        var(--xmas-red) 10px, 
-        var(--neutral-white) 10px, 
-        var(--neutral-white) 20px, 
-        var(--xmas-green) 20px, 
-        var(--xmas-green) 30px, 
-        var(--neutral-white) 30px, 
-        var(--neutral-white) 40px
-    );
-    z-index: 10;
-}
-
-.footer-content {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    margin: 0 auto;
-    max-width: 700px;
-}
-
-.footer-section h3 {
-    color: var(--color-4);
-    font-family: Alegreya, serif;
-    font-size: medium;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.footer-section h4 {
-    color: hsla(0, 0%, 100%, .7);
-    font-family: Inter, sans-serif;
-    font-size: small;
-    font-weight: 400;
-    margin-bottom: 40px;
-    text-align: center;
-    text-shadow: none;
-}
-
-.footer-section a {
-    color: hsla(0, 0%, 100%, .7);
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    transition: color .3s ease;
-}
-
-.footer-section a:hover {
-    color: var(--color-1);
-}
-
-.footer-bottom2 {
-    border-top: 1px solid hsla(0, 0%, 100%, .1);
-    margin-top: 40px;
-    padding: 24px 40px 0;
-}
-
-.footer-bottom-redes,
-.footer-bottom2 {
-    color: hsla(0, 0%, 100%, .5);
-    font-size: small;
-    text-align: center;
-}
-
-.footer-bottom-redes {
-    margin-bottom: -20px;
-    margin-top: 0;
-    padding-top: 10px;
-}
-
-.social-icons {
-    align-items: center;
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.social-icon {
-    align-items: center;
-    background: hsla(0, 0%, 100%, .1);
-    border-radius: 50%;
-    color: hsla(0, 0%, 100%, .7);
-    display: flex;
-    height: 34px;
-    justify-content: center;
-    text-decoration: none;
-    transition: all .3s ease;
-    width: 34px;
-}
-
-.social-icon:hover {
-    background: var(--neutral-medium);
-    color: var(--neutral-white);
-    transform: translateY(-3px);
-}
-
-.social-icon svg {
-    height: 50px;
-    width: 50px;
-}
-
-/* Estilos de Diálogo/Modal Adicionais */
-dialog {
-    background-color: var(--neutral-white);
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
-    left: 50%;
-    max-width: 500px;
-    padding: 0;
-    position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-}
-
-dialog::backdrop {
-    background: rgba(0, 0, 0, .5);
-}
-
-.popup-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 25px;
-}
-
-.popup-content h2 {
-    color: var(--color-2);
-    font-family: Alegreya, serif;
-    font-size: 1.8rem;
-}
-
-.popup-content p {
-    color: var(--color-2);
-    line-height: 1.6;
-}
-
-.popup-content textarea {
-    background: var(--neutral-light);
-    border: 1px solid var(--neutral-light);
-    border-radius: 8px;
-    font-family: Inter, sans-serif;
-    font-size: 1rem;
-    padding: 10px;
-    resize: vertical;
-    width: 100%;
-}
-
-.popup-content button {
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    padding: 12px 20px;
-    transition: background-color .3s ease;
-}
-
-.popup-content button[type=submit] {
-    background-color: var(--color-1);
-    color: var(--neutral-white);
-}
-
-.popup-content button[type=button] {
-    background-color: var(--neutral-medium);
-    color: var(--neutral-white);
-}
-
-.popup-content button:hover {
-    opacity: .8;
-}
-
-@media (max-width: 768px) {
-    .popup-content h2 {
-        font-size: 1.5rem;
-    }
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    color: var(--color-2);
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
-    background: var(--neutral-light);
-    border: 1px solid var(--neutral-light);
-    border-radius: 8px;
-    font-family: Inter, sans-serif;
-    font-size: 1rem;
-    padding: 10px;
-    width: 100%;
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-/* Modificações para o efeito natalino */
-.floating-hearts {
-    /* Mantém a mesma estrutura de container */
-    height: 100%;
-    left: 0;
-    overflow: hidden;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    /* Nova propriedade para visibilidade no topo */
-    z-index: 10; /* Ajuste se necessário para ficar acima de outros elementos */
-}
-
-.heart {
-    animation: christmasFall 15s linear infinite; /* Nome da animação alterado para refletir o Natal */
-    color: var(--color-1); /* Ou mude para branco para efeito de neve: #fff */
-    font-size: 26px; /* Aumentado o tamanho para elementos natalinos */
-    opacity: 1.0; /* Aumentado a opacidade para maior visibilidade */
-    position: absolute;
-    /* Mantém a cor original ou use uma cor mais natalina, como branco ou dourado */
-    color: #fff; /* Para um efeito de neve, por exemplo */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Adiciona um brilho sutil */
-}
-
-/* Keyframes - christmasFall (Nova animação para o efeito de queda) */
-@keyframes christmasFall {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px) rotate(0deg); /* Começa acima da tela */
-    }
-    10% {
-        opacity: 1.0; /* Opacidade ajustada */
-    }
-    90% {
-        opacity: 1.0; /* Opacidade ajustada */
-    }
-    100% { /* Alterado para 100% ao invés de 'to' para maior clareza */
-        opacity: 0;
-        transform: translateY(100vh) rotate(1turn); /* Termina abaixo da tela */
-    }
-}
-
-/* Botão do Menu Mobile */
-.mobile-menu-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: none;
-    padding: 5px;
-}
-
-.mobile-menu-btn span {
-    background: var(--color-2);
-    border-radius: 2px;
-    display: block;
-    height: 3px;
-    margin: 5px 0;
-    transition: all .3s ease;
-    width: 25px;
-}
-
-/* Media Queries (Responsividade) */
-@media (max-width: 768px) {
-    .nav {
-        padding: 15px 20px;
-    }
-
-    .nav-links {
-        background: var(--neutral-white);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
-        display: none;
-        flex-direction: column;
-        left: 0;
-        padding: 20px;
-        position: absolute;
-        right: 0;
-        top: 100%;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .logo-text {
-        font-size: 1.6rem;
-    }
-
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .cta-buttons {
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        max-width: 300px;
-        width: 100%;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        gap: 40px;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-    }
-
-    .step-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
-
-/* Animações de Scroll e Elementos de UI */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all .6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.loader {
-    align-items: center;
-    background: var(--color-5);
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transition: opacity .5s ease;
-    z-index: 9999;
-}
-
-.loader.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.loader-icon {
-    align-items: center;
-    animation: pulse-loader 1.5s ease-in-out infinite;
-    background: var(--color-1);
-    border-radius: 50%;
-    display: flex;
-    height: 80px;
-    justify-content: center;
-    width: 80px;
-}
-
-/* Keyframes - pulse-loader */
-@keyframes pulse-loader {
-    0%,
-    to {
-        opacity: .5;
-        transform: scale(.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
-
-/* Botão Voltar ao Topo */
-.back-to-top {
-    align-items: center;
-    background-color: var(--color-1);
-    border-radius: 50%;
-    bottom: 20px;
-    color: var(--neutral-white);
-    display: flex;
-    font-size: 1.5rem;
-    height: 50px;
-    justify-content: center;
-    opacity: 0;
-    position: fixed;
-    right: 20px;
-    text-decoration: none;
-    transition: opacity .3s, visibility .3s;
-    visibility: hidden;
-    width: 50px;
-    z-index: 1000;
-}
-
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    background-color: #ff5515;
-}
-
-/* Link da Logo com Animação Shine */
-.logo-link {
-    align-items: center;
-    display: inline-flex;
-    mask-image: none;
-    -webkit-mask-image: none;
-    overflow: hidden;
-    position: relative;
-}
-
-.logo-link .logo-image {
-    display: block;
-    height: 26px;
-    width: auto;
-}
-
-.logo-link:after {
-    animation: recadim-logo-shine 4.2s ease-in-out infinite;
-    background: linear-gradient(120deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .55) 50%, hsla(0, 0%, 100%, 0));
-    content: "";
-    filter: blur(.4px);
-    height: 160%;
-    left: -80%;
-    mix-blend-mode: screen;
-    opacity: .7;
-    pointer-events: none;
-    position: absolute;
-    top: -30%;
-    transform: skewX(-20deg);
-    width: 60%;
-    will-change: left;
-}
-
-/* Keyframes - recadim-logo-shine */
-@keyframes recadim-logo-shine {
-    0% {
-        left: -80%;
-    }
-
-    50% {
-        left: 120%;
-    }
-
-    to {
-        left: 120%;
-    }
-}
-
-.logo-link:hover:after {
-    animation-play-state: paused;
-}
-
-
-
-
-
-
-
-/* --- NOVA SEÇÃO MINIMALISTA: SLIDER ROTATIVO --- */
-.display-section {
-    padding: 80px 20px;
-    /* background: var(--neutral-light); */
-    text-align: center;
-    background-color: var(--color-2);
-}
-
-/* Título e Subtítulo minimalistas */
-.display-section .section-title {
-    margin-bottom: 10px;
-    color: var(--color-1);
-}
-.display-section .section-subtitle {
-    margin-bottom: 40px;
-    color: var(--color-5);
-}
-
-/* Contêiner do Slider */
-.slider-container {
-    max-width: 800px; /* Limita a largura para foco */
-    margin: 0 auto;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(30, 41, 59, .15);
-    position: relative;
-    height: 450px; /* Altura fixa para o slider */
-}
-
-/* Estilo Comum dos Itens do Slider (Imagem e Vídeo) */
-.slider-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    display: flex; /* Para centralizar o play overlay */
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-item.active {
-    opacity: 1;
-    z-index: 10;
-}
-
-/* Card de Imagem (Post/Promoção) */
-.promo-card {
-    background-color: var(--color-5);
-}
-
-.promo-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 100%; /* Suaviza a imagem de fundo */
-}
-
-.promo-overlay {
-    position: absolute;
-    padding: 30px;
-    color: var(--color-2);
-    text-align: left;
-    max-width: 80%;
-}
-
-.promo-overlay h3 {
-    font-family: Alegreya, serif;
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    color: var(--color-1);
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Ajuda na leitura */
-}
-
-.promo-overlay p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Card de Vídeo */
-.video-slider {
-    cursor: pointer;
-    background: var(--color-2); /* Fundo escuro para vídeo */
-}
-
-.video-player-frame {
-    width: 100%;
-    height: 100%;
-}
-
-/* Overlay do Play Button (Somente visível quando o vídeo é estático) */
-.play-overlay-minimal {
-    position: absolute;
-    z-index: 1;
-    background-color: rgba(255, 105, 38, 0.9); /* Cor do tema: var(--color-1) */
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-}
-
-.video-slider.playing .play-overlay-minimal {
-    opacity: 0; /* Esconde quando o usuário clica e o vídeo está tocando com som */
-    pointer-events: none;
-}
-
-.play-overlay-minimal svg {
-    color: var(--neutral-white);
-    width: 40px;
-    height: 40px;
-    transform: translateX(3px);
-}
-/* --- FIM NOVA SEÇÃO CSS MINIMALISTA --- */
-
-
-
-
-
-
-
+        /* Definições de Fontes */
+        @font-face {
+            font-display: swap;
+            font-family: Alegreya;
+            font-style: normal;
+            font-weight: 400 900;
+            src: url(../fonts/alegreya.woff2) format("woff2");
+        }
+
+        @font-face {
+            font-display: swap;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 300 700;
+            src: url(../fonts/inter.woff2) format("woff2");
+        }
+
+        /* Reset Básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Variáveis CSS */
+        :root {
+            --color-1: #ff6926;
+            --color-2: #1e293b;
+            --color-3: #0f766e;
+            --color-4: #10b981;
+            --color-5: #fdf6ec;
+            --color-6: #dc2626;
+            --color-7: #8b5cf6;
+            --neutral-white: #fff;
+            --neutral-light: #f8fafc;
+            --neutral-medium: #64748b;
+
+        }
+
+        /* Estilos Globais do Corpo */
+        body {
+            background: var(--color-5);
+            color: var(--color-2);
+            font-family: Inter, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Seção Hero */
+        .hero {
+            align-items: center;
+            background: linear-gradient(0deg, var(--color-5) 0, #f8fafc 100%);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero:before {
+            background: radial-gradient(circle at 30% 20%, rgba(255, 105, 38, .1) 0, transparent 0), radial-gradient(circle at 70% 80%, rgba(16, 185, 129, .08) 0, transparent 20%);
+            bottom: 0;
+            content: "";
+            pointer-events: none;
+            position: absolute;
+        }
+
+        .hero:before,
+        .nav {
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+
+
+        /* Navegação */
+        .nav {
+            align-items: center;
+            background: hsla(36, 93%, 94%, .98);
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            position: fixed;
+            transition: all .3s ease;
+            z-index: 1000;
+        }
+
+        .nav.scrolled {
+            backdrop-filter: blur(10px);
+            background: var(--neutral-white);
+            box-shadow: 0 2px 20px rgba(30, 41, 59, .08);
+        }
+
+        /* Loader */
+        .loader {
+            inset: 0;
+        }
+
+        .loader.hidden {
+            transition: opacity .5s ease;
+        }
+
+        .loader-symbol {
+            animation: spin 1s linear infinite;
+            border: 6px solid rgba(255, 105, 38, .2);
+            border-radius: 50%;
+            border-top: 6px solid var(--color-1);
+            height: 80px;
+            width: 80px;
+        }
+
+        .loader-icon {
+            animation: spin 1.2s linear infinite;
+        }
+
+        /* Keyframes - spin */
+        @keyframes spin {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* Diálogo/Modal */
+        dialog {
+            background: var(--neutral-white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+            display: none;
+            z-index: 1000;
+        }
+
+        dialog[open] {
+            display: block;
+        }
+
+        dialog::backdrop {
+            background: rgba(30, 41, 59, .6);
+        }
+
+        /* Conteúdo do Popup */
+        .popup-content button {
+            transition: .3s;
+        }
+
+        .popup-content button[type=submit] {
+            background: var(--color-1);
+        }
+
+        .popup-content button[type=button] {
+            background: var(--neutral-medium);
+        }
+
+        /* Logo */
+        .top-logo:after {
+            animation: shine 4s ease-in-out infinite;
+            background: linear-gradient(120deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0));
+            content: "";
+            height: 100%;
+            left: -75%;
+            position: absolute;
+            top: 0;
+            transform: skewX(-20deg);
+            width: 50%;
+        }
+
+        /* Keyframes - shine */
+        @keyframes shine {
+            0% {
+                left: -75%;
+            }
+
+            50% {
+                left: 125%;
+            }
+
+            to {
+                left: 125%;
+            }
+        }
+
+        /* Links de Navegação */
+        .nav-links {
+            align-items: center;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            border-radius: 20px;
+            color: var(--color-2);
+            font-size: .95rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 105, 38, .1);
+            color: var(--color-1);
+        }
+
+        /* Botão CTA na Navegação */
+        .cta-nav-btn {
+            background: var(--color-1);
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 105, 38, .3);
+            color: var(--neutral-white);
+            font-size: .95rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        .cta-nav-btn:hover {
+            background: #ff5515;
+            box-shadow: 0 8px 25px rgba(255, 105, 38, .4);
+            transform: translateY(-2px);
+        }
+
+        /* Conteúdo Hero */
+        .hero-content {
+            max-width: 900px;
+            padding-top: 80px;
+            z-index: 50;
+        }
+
+        .hero h1 {
+            animation: slideUp 1s ease-out;
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--color-1);
+        }
+
+        .hero-subtitle {
+            animation: slideUp 1s ease-out .2s both;
+            color: var(--color-3);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            animation: slideUp 1s ease-out .4s both;
+            color: var(--color-2);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 650px;
+            opacity: .8;
+        }
+
+        /* Botões CTA */
+        .cta-buttons {
+            animation: slideUp 1s ease-out .6s both;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            align-items: center;
+            background: var(--color-1);
+            border-radius: 30px;
+            box-shadow: 0 6px 20px rgba(255, 105, 38, .3);
+            color: var(--neutral-white);
+            display: inline-flex;
+            font-size: 1.05rem;
+            font-weight: 600;
+            gap: 8px;
+            padding: 16px 35px;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ff5515;
+            box-shadow: 0 10px 30px rgba(255, 105, 38, .4);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            align-items: center;
+            background: var(--neutral-white);
+            border: 2px solid var(--color-4);
+            border-radius: 30px;
+            color: var(--color-3);
+            display: inline-flex;
+            font-size: 1.05rem;
+            font-weight: 600;
+            gap: 8px;
+            padding: 16px 35px;
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-4);
+            border-color: var(--color-4);
+            color: var(--neutral-white);
+            transform: translateY(-3px);
+        }
+
+        /* Keyframes - slideUp */
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Seção Features */
+        .features {
+            background: var(--neutral-white);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .section-title {
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--color-3);
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .feature-card {
+            background: var(--color-5);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all .3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-1);
+            box-shadow: 0 15px 40px rgba(255, 105, 38, .1);
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            align-items: center;
+            background: linear-gradient(135deg, var(--color-1) 0, var(--color-6) 100%);
+            border-radius: 50%;
+            color: var(--neutral-white);
+            display: flex;
+            font-size: 1.8rem;
+            height: 70px;
+            justify-content: center;
+            margin: 0 auto 25px;
+            width: 70px;
+        }
+
+        .feature-title {
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: var(--color-2);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: .8;
+        }
+
+        /* Seção About */
+        .about {
+            background: linear-gradient(135deg, var(--color-3) 0, var(--color-4) 100%);
+            color: var(--neutral-white);
+            overflow: hidden;
+            padding: 100px 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .about:before {
+            animation: rotate 30s linear infinite;
+            background: radial-gradient(circle, hsla(0, 0%, 100%, .05) 0, transparent 70%);
+            content: "";
+            height: 200%;
+            position: absolute;
+            right: -50%;
+            top: -50%;
+            width: 200%;
+        }
+
+        /* Keyframes - rotate */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        .about .section-title {
+            color: var(--neutral-white);
+        }
+
+        .about .section-subtitle {
+            color: hsla(0, 0%, 100%, .9);
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0 auto 40px;
+            max-width: 800px;
+        }
+
+        .about-content,
+        .stats {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Estatísticas */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            color: var(--color-5);
+            display: block;
+            font-family: Alegreya, serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+        }
+
+        .stat-label {
+            color: hsla(0, 0%, 100%, .9);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        /* Seção How It Works */
+        .how-it-works {
+            background: var(--color-5);
+            padding: 100px 20px;
+        }
+
+        .steps-container {
+            display: grid;
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .step-card {
+            align-items: start;
+            background: var(--neutral-white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(30, 41, 59, .05);
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            transition: all .3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 8px 30px rgba(255, 105, 38, .15);
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            align-items: center;
+            background: var(--color-1);
+            border-radius: 50%;
+            color: var(--neutral-white);
+            display: flex;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            height: 50px;
+            justify-content: center;
+            width: 50px;
+        }
+
+        .step-content h4 {
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: var(--color-2);
+            line-height: 1.6;
+            opacity: .8;
+        }
+
+        /* Seção Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--neutral-white) 0, var(--color-5) 100%);
+            padding: 180px 20px;
+            text-align: center;
+        }
+
+        .final-cta .section-title {
+            color: var(--color-2);
+            margin-bottom: 30px;
+        }
+
+        .final-cta .section-subtitle {
+            color: var(--color-3);
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+        }
+
+        .final-cta-note {
+            color: var(--color-2);
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: .8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Rodapé (Footer) */
+        .footer {
+            background: var(--color-2);
+            color: var(--neutral-white);
+            padding: 60px 20px 30px;
+        }
+
+
+
+
+        .footer-content {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        .footer-section h3 {
+            color: var(--color-4);
+            font-family: Alegreya, serif;
+            font-size: medium;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .footer-section h4 {
+            color: hsla(0, 0%, 100%, .7);
+            font-family: Inter, sans-serif;
+            font-size: small;
+            font-weight: 400;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: none;
+        }
+
+        .footer-section a {
+            color: hsla(0, 0%, 100%, .7);
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: color .3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-1);
+        }
+
+        .footer-bottom2 {
+            border-top: 1px solid hsla(0, 0%, 100%, .1);
+            margin-top: 40px;
+            padding: 24px 40px 0;
+        }
+
+        .footer-bottom-redes,
+        .footer-bottom2 {
+            color: hsla(0, 0%, 100%, .5);
+            font-size: small;
+            text-align: center;
+        }
+
+        .footer-bottom-redes {
+            margin-bottom: -20px;
+            margin-top: 0;
+            padding-top: 10px;
+        }
+
+        .social-icons {
+            align-items: center;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .social-icon {
+            align-items: center;
+            background: hsla(0, 0%, 100%, .1);
+            border-radius: 50%;
+            color: hsla(0, 0%, 100%, .7);
+            display: flex;
+            height: 34px;
+            justify-content: center;
+            text-decoration: none;
+            transition: all .3s ease;
+            width: 34px;
+        }
+
+        .social-icon:hover {
+            background: var(--neutral-medium);
+            color: var(--neutral-white);
+            transform: translateY(-3px);
+        }
+
+        .social-icon svg {
+            height: 50px;
+            width: 50px;
+        }
+
+        /* Estilos de Diálogo/Modal Adicionais */
+        dialog {
+            background-color: var(--neutral-white);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+            left: 50%;
+            max-width: 500px;
+            padding: 0;
+            position: fixed;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 25px;
+        }
+
+        .popup-content h2 {
+            color: var(--color-2);
+            font-family: Alegreya, serif;
+            font-size: 1.8rem;
+        }
+
+        .popup-content p {
+            color: var(--color-2);
+            line-height: 1.6;
+        }
+
+        .popup-content textarea {
+            background: var(--neutral-light);
+            border: 1px solid var(--neutral-light);
+            border-radius: 8px;
+            font-family: Inter, sans-serif;
+            font-size: 1rem;
+            padding: 10px;
+            resize: vertical;
+            width: 100%;
+        }
+
+        .popup-content button {
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 12px 20px;
+            transition: background-color .3s ease;
+        }
+
+        .popup-content button[type=submit] {
+            background-color: var(--color-1);
+            color: var(--neutral-white);
+        }
+
+        .popup-content button[type=button] {
+            background-color: var(--neutral-medium);
+            color: var(--neutral-white);
+        }
+
+        .popup-content button:hover {
+            opacity: .8;
+        }
+
+        @media (max-width: 768px) {
+            .popup-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            color: var(--color-2);
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: var(--neutral-light);
+            border: 1px solid var(--neutral-light);
+            border-radius: 8px;
+            font-family: Inter, sans-serif;
+            font-size: 1rem;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Modificações para o efeito natalino */
+        .floating-hearts {
+            /* Mantém a mesma estrutura de container */
+            height: 100%;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            /* Nova propriedade para visibilidade no topo */
+            z-index: 10;
+            /* Ajuste se necessário para ficar acima de outros elementos */
+        }
+
+
+
+        /* Keyframes - christmasFall (Nova animação para o efeito de queda) */
+
+
+        /* Botão do Menu Mobile */
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            background: var(--color-2);
+            border-radius: 2px;
+            display: block;
+            height: 3px;
+            margin: 5px 0;
+            transition: all .3s ease;
+            width: 25px;
+        }
+
+        /* Media Queries (Responsividade) */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                background: var(--neutral-white);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+                display: none;
+                flex-direction: column;
+                left: 0;
+                padding: 20px;
+                position: absolute;
+                right: 0;
+                top: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .logo-text {
+                font-size: 1.6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                max-width: 300px;
+                width: 100%;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 40px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .step-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animações de Scroll e Elementos de UI */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loader {
+            align-items: center;
+            background: var(--color-5);
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transition: opacity .5s ease;
+            z-index: 9999;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-icon {
+            align-items: center;
+            animation: pulse-loader 1.5s ease-in-out infinite;
+            background: var(--color-1);
+            border-radius: 50%;
+            display: flex;
+            height: 80px;
+            justify-content: center;
+            width: 80px;
+        }
+
+        /* Keyframes - pulse-loader */
+        @keyframes pulse-loader {
+
+            0%,
+            to {
+                opacity: .5;
+                transform: scale(.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Botão Voltar ao Topo */
+        .back-to-top {
+            align-items: center;
+            background-color: var(--color-1);
+            border-radius: 50%;
+            bottom: 20px;
+            color: var(--neutral-white);
+            display: flex;
+            font-size: 1.5rem;
+            height: 50px;
+            justify-content: center;
+            opacity: 0;
+            position: fixed;
+            right: 20px;
+            text-decoration: none;
+            transition: opacity .3s, visibility .3s;
+            visibility: hidden;
+            width: 50px;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #ff5515;
+        }
+
+        /* Link da Logo com Animação Shine */
+        .logo-link {
+            align-items: center;
+            display: inline-flex;
+            mask-image: none;
+            -webkit-mask-image: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo-link .logo-image {
+            display: block;
+            height: 26px;
+            width: auto;
+        }
+
+        .logo-link:after {
+            animation: recadim-logo-shine 4.2s ease-in-out infinite;
+            background: linear-gradient(120deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .55) 50%, hsla(0, 0%, 100%, 0));
+            content: "";
+            filter: blur(.4px);
+            height: 160%;
+            left: -80%;
+            mix-blend-mode: screen;
+            opacity: .7;
+            pointer-events: none;
+            position: absolute;
+            top: -30%;
+            transform: skewX(-20deg);
+            width: 60%;
+            will-change: left;
+        }
+
+        /* Keyframes - recadim-logo-shine */
+        @keyframes recadim-logo-shine {
+            0% {
+                left: -80%;
+            }
+
+            50% {
+                left: 120%;
+            }
+
+            to {
+                left: 120%;
+            }
+        }
+
+        .logo-link:hover:after {
+            animation-play-state: paused;
+        }
+
+
+
+
+
+
+
+        /* DISABLED SECTION (User Request) */
+        @media only screen and (max-width: 1px) {
+
+            /* --- NOVA SEÇÃO MINIMALISTA: SLIDER ROTATIVO --- */
+            .display-section {
+                padding: 80px 20px;
+                /* background: var(--neutral-light); */
+                text-align: center;
+                background-color: var(--color-2);
+            }
+
+            /* Título e Subtítulo minimalistas */
+            .display-section .section-title {
+                margin-bottom: 10px;
+                color: var(--color-1);
+            }
+
+            .display-section .section-subtitle {
+                margin-bottom: 40px;
+                color: var(--color-5);
+            }
+
+            /* Contêiner do Slider */
+            .slider-container {
+                max-width: 800px;
+                /* Limita a largura para foco */
+                margin: 0 auto;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(30, 41, 59, .15);
+                position: relative;
+                height: 450px;
+                /* Altura fixa para o slider */
+            }
+
+            /* Estilo Comum dos Itens do Slider (Imagem e Vídeo) */
+            .slider-item {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+                display: flex;
+                /* Para centralizar o play overlay */
+                align-items: center;
+                justify-content: center;
+            }
+
+            .slider-item.active {
+                opacity: 1;
+                z-index: 10;
+            }
+
+            /* Card de Imagem (Post/Promoção) */
+            .promo-card {
+                background-color: var(--color-5);
+            }
+
+            .promo-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 100%;
+                /* Suaviza a imagem de fundo */
+            }
+
+            .promo-overlay {
+                position: absolute;
+                padding: 30px;
+                color: var(--color-2);
+                text-align: left;
+                max-width: 80%;
+            }
+
+            .promo-overlay h3 {
+                font-family: Alegreya, serif;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+                color: var(--color-1);
+                text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+                /* Ajuda na leitura */
+            }
+
+            .promo-overlay p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            /* Card de Vídeo */
+            .video-slider {
+                cursor: pointer;
+                background: var(--color-2);
+                /* Fundo escuro para vídeo */
+            }
+
+            .video-player-frame {
+                width: 100%;
+                height: 100%;
+            }
+
+            /* Overlay do Play Button (Somente visível quando o vídeo é estático) */
+            .play-overlay-minimal {
+                position: absolute;
+                z-index: 1;
+                background-color: rgba(255, 105, 38, 0.9);
+                /* Cor do tema: var(--color-1) */
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s ease;
+                cursor: pointer;
+            }
+
+            .video-slider.playing .play-overlay-minimal {
+                opacity: 0;
+                /* Esconde quando o usuário clica e o vídeo está tocando com som */
+                pointer-events: none;
+            }
+
+            .play-overlay-minimal svg {
+                color: var(--neutral-white);
+                width: 40px;
+                height: 40px;
+                transform: translateX(3px);
+            }
+
+            /* --- FIM NOVA SEÇÃO CSS MINIMALISTA --- */
+
+        }
     </style>
 </head>
 
@@ -1243,20 +1187,20 @@ dialog::backdrop {
 <body>
 
     <!-- Loader -->
-<!--     <div class="loader" id="loader">
+    <!--     <div class="loader" id="loader">
     <div class="loader-symbol"></div>
     </div>
  -->
 
     <!-- Loader -->
     <div class="loader" id="loader">
-    <img src="img/simbol.svg" alt="" class="loader-icon">
+        <img src="img/simbol.svg" alt="" class="loader-icon">
     </div>
 
 
 
 
-<!-- botao back to top -->
+    <!-- botao back to top -->
     <a href="#" class="back-to-top" id="backToTopBtn">
         ▲
     </a>
@@ -1281,31 +1225,23 @@ dialog::backdrop {
             <span></span>
             <span></span>
             <span></span>
-            
+
         </button>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="floating-hearts">
-            <div class="heart" style="left: 10%; animation-delay: 0s;">🎄</div> 
-            <div class="heart" style="left: 20%; animation-delay: 3s;">❄️</div>
-            <div class="heart" style="left: 30%; animation-delay: 6s;">🎅</div>
-            <div class="heart" style="left: 40%; animation-delay: 2s;">☃️</div>
-            <div class="heart" style="left: 50%; animation-delay: 5s;">🎁</div>
-            <div class="heart" style="left: 60%; animation-delay: 8s;">🔔</div>
-            <div class="heart" style="left: 70%; animation-delay: 1s;">🦌</div>
-            <div class="heart" style="left: 80%; animation-delay: 4s;">🤶</div>
-            <div class="heart" style="left: 90%; animation-delay: 7s;">🎄</div>
-        </div>
+
 
         <div class="hero-content">
             <h1>Seu <span>Amigo Digital</span> de Sempre</h1>
             <p class="hero-subtitle">"O lugar do que nunca foi dito"</p>
             <p class="hero-description">
-                O <strong>Recadim</strong> é seu parceiro para criar mensagens que tocam o coração — românticas, divertidas, de apoio, de gratidão ou de desculpas.  
-Você pode escrever do seu jeito e nós damos um toque especial, ou, se faltar inspiração, ajudamos a transformar sentimentos em palavras únicas.  
-Tudo chega direto ao WhatsApp de quem merece esse carinho.
+                O <strong>Recadim</strong> é seu parceiro para criar mensagens que tocam o coração — românticas,
+                divertidas, de apoio, de gratidão ou de desculpas.
+                Você pode escrever do seu jeito e nós damos um toque especial, ou, se faltar inspiração, ajudamos a
+                transformar sentimentos em palavras únicas.
+                Tudo chega direto ao WhatsApp de quem merece esse carinho.
             </p>
             <div class="cta-buttons">
                 <a href="https://wa.me/message/DX4O7GTGHFKZL1" class="btn-primary">
@@ -1323,70 +1259,69 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
 
-<!-- NOVA SEÇÃO DISPLAY IMAGEM E VIDEO (TESTAR) -->
-<section class="display-section fade-in" id="display">
-    <div class="container">
-        <h2 class="section-title">Nosso Feed!</h2>
-        <p class="section-subtitle">
-            Notícias rápidas, promoções e a inspiração da semana.
-        </p>
-        
-        <div class="slider-container" id="content-slider">
-            
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_1.png" alt="Recadim da Semana" class="promo-image"> 
-            </div>
+    <!-- NOVA SEÇÃO DISPLAY IMAGEM E VIDEO (TESTAR) -->
+    <!-- DISABLED SECTION (User Request)
+    <section class="display-section fade-in" id="display">
+        <div class="container">
+            <h2 class="section-title">Nosso Feed!</h2>
+            <p class="section-subtitle">
+                Notícias rápidas, promoções e a inspiração da semana.
+            </p>
 
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_2.png" alt="Recadim da Semana" class="promo-image"> 
-            </div>        
-            
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_3.png" alt="Recadim da Semana" class="promo-image"> 
-            </div>             
+            <div class="slider-container" id="content-slider">
 
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_4.png" alt="Recadim da Semana" class="promo-image"> 
-            </div>             
-            
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_5.png" alt="Recadim da Semana" class="promo-image"> 
-            </div> 
-
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_6.png" alt="Recadim da Semana" class="promo-image"> 
-            </div> 
-
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_7.png" alt="Recadim da Semana" class="promo-image"> 
-            </div> 
-
-            <div class="slider-item promo-card active" data-type="image">
-                <img src="img/post_8.png" alt="Recadim da Semana" class="promo-image"> 
-            </div> 
-
-
-            <div class="slider-item video-slider" data-type="video" id="video-slider-item">
-                <iframe 
-                    id="slider-youtube-player"
-                    src="https://www.youtube-nocookie.com/embed/6KOX112qnjM?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=6KOX112qnjM&enablejsapi=1"
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media; fullscreen" 
-                    allowfullscreen
-                    class="video-player-frame">
-                </iframe>
-                
-                <div class="play-overlay-minimal" id="play-overlay-minimal">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_1.png" alt="Recadim da Semana" class="promo-image">
                 </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_2.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_3.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_4.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_5.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_6.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_7.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+                <div class="slider-item promo-card active" data-type="image">
+                    <img src="img/post_8.png" alt="Recadim da Semana" class="promo-image">
+                </div>
+
+
+                <div class="slider-item video-slider" data-type="video" id="video-slider-item">
+                    <iframe id="slider-youtube-player"
+                        src="https://www.youtube-nocookie.com/embed/6KOX112qnjM?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=6KOX112qnjM&enablejsapi=1"
+                        frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen
+                        class="video-player-frame">
+                    </iframe>
+
+                    <div class="play-overlay-minimal" id="play-overlay-minimal">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+
             </div>
-            
         </div>
-    </div>
-</section>
-<!-- FINAL DA NOVA SEÇÃO DISPLAY IMAGEM E VIDEO  -->
+    </section>
+    -->
+    <!-- FINAL DA NOVA SEÇÃO DISPLAY IMAGEM E VIDEO  -->
 
 
 
@@ -1398,187 +1333,203 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
     <!-- Features Section -->
     <section class="features fade-in" id="recursos">
-    <div class="container">
-        <h2 class="section-title">Como Damos Vida às Suas Palavras</h2>
-        <p class="section-subtitle">
-        Cada Recadim é pensado com carinho para tocar o coração de quem recebe.
-        </p>
+        <div class="container">
+            <h2 class="section-title">Como Damos Vida às Suas Palavras</h2>
+            <p class="section-subtitle">
+                Cada Recadim é pensado com carinho para tocar o coração de quem recebe.
+            </p>
 
-        <div class="features-grid">
-        <div class="feature-card fade-in">
-            <div class="feature-icon">
-            <img src="img/estrela-icon.png" alt="Ícone de estrela brilhante" style="width:40px;height:40px;">
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <img src="img/estrela-icon.png" alt="Ícone de estrela brilhante"
+                            style="width:40px;height:40px;">
+                    </div>
+                    <h3 class="feature-title">Mensagens Sob Medida</h3>
+                    <p class="feature-description">
+                        Seu sentimento é único, e seu Recadim também. Compartilhe sua inspiração (ou peça nossa ajuda!)
+                        e transformamos sua emoção em uma mensagem exclusiva, feita sob medida para ser inesquecível.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💝</div>
+                    <h3 class="feature-title">Entrega com Carinho</h3>
+                    <p class="feature-description">
+                        Não é só uma mensagem, é um presente. Entregamos seu Recadim diretamente no WhatsApp de quem
+                        você escolheu, com a delicadeza e a atenção que ele merece, garantindo que a emoção chegue
+                        completa ao coração do destinatário.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Toque Criativo</h3>
+                    <p class="feature-description">
+                        Começamos focando no que mais importa: as palavras.
+                        Ajudamos você a encontrar o tom certo — divertido, acolhedor ou emocionante — para que cada
+                        Recadim seja simples e cheio de significado.
+                    </p>
+
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💌</div>
+                    <h3 class="feature-title">Conexão Genuína</h3>
+                    <p class="feature-description">
+                        O Recadim é a pausa que realmente conecta. É no seu momento de presença e confiança que
+                        transformamos seus sentimentos em uma expressão única e verdadeira, feita para ser guardada com
+                        carinho no coração de quem recebe.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤭</div>
+                    <h3 class="feature-title"> Sua Mensagem, Seu Segredo</h3>
+                    <p class="feature-description">
+                        Quer surpreender com uma mensagem que fala direto ao coração, sem precisar revelar quem enviou?
+                        Com a Recadim, sua voz anônima ganha vida, cheia de carinho e mistério.
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Sua Voz, Nosso Apoio</h3>
+                    <p class="feature-description">
+                        Se a inspiração bater e as palavras sumirem, estamos aqui para te guiar. Conte com nosso apoio
+                        para lapidar seus sentimentos em um Recadim perfeito, feito sob medida para tocar quem você ama.
+                    </p>
+                </div>
             </div>
-            <h3 class="feature-title">Mensagens Sob Medida</h3>
-            <p class="feature-description">
-            Seu sentimento é único, e seu Recadim também. Compartilhe sua inspiração (ou peça nossa ajuda!) e transformamos sua emoção em uma mensagem exclusiva, feita sob medida para ser inesquecível.
-            </p>
         </div>
-
-        <div class="feature-card fade-in">
-            <div class="feature-icon">💝</div>
-            <h3 class="feature-title">Entrega com Carinho</h3>
-            <p class="feature-description">
-            Não é só uma mensagem, é um presente. Entregamos seu Recadim diretamente no WhatsApp de quem você escolheu, com a delicadeza e a atenção que ele merece, garantindo que a emoção chegue completa ao coração do destinatário.
-            </p>
-        </div>
-
-        <div class="feature-card fade-in">
-            <div class="feature-icon">🎨</div>
-            <h3 class="feature-title">Toque Criativo</h3>
-            <p class="feature-description">
-            Começamos focando no que mais importa: as palavras.  
-            Ajudamos você a encontrar o tom certo — divertido, acolhedor ou emocionante — para que cada Recadim seja simples e cheio de significado.
-            </p>
-
-        </div>
-
-        <div class="feature-card fade-in">
-            <div class="feature-icon">💌</div>
-            <h3 class="feature-title">Conexão Genuína</h3>
-            <p class="feature-description">
-            O Recadim é a pausa que realmente conecta. É no seu momento de presença e confiança que transformamos seus sentimentos em uma expressão única e verdadeira, feita para ser guardada com carinho no coração de quem recebe.
-            </p>
-        </div>
-
-        <div class="feature-card fade-in">
-            <div class="feature-icon">🤭</div>
-            <h3 class="feature-title"> Sua Mensagem, Seu Segredo</h3>
-            <p class="feature-description">
-            Quer surpreender com uma mensagem que fala direto ao coração, sem precisar revelar quem enviou? Com a Recadim, sua voz anônima ganha vida, cheia de carinho e mistério.
-            </p>
-        </div>
-
-        <div class="feature-card fade-in">
-            <div class="feature-icon">🤝</div>
-            <h3 class="feature-title">Sua Voz, Nosso Apoio</h3>
-            <p class="feature-description">
-            Se a inspiração bater e as palavras sumirem, estamos aqui para te guiar. Conte com nosso apoio para lapidar seus sentimentos em um Recadim perfeito, feito sob medida para tocar quem você ama.
-            </p>
-        </div>
-        </div>
-    </div>
     </section>
 
 
-<!-- How it Works Section -->
-<section class="how-it-works fade-in" id="como-funciona">
-  <div class="container">
-    <h2 class="section-title">Como Funciona</h2>
-    <p class="section-subtitle">
-      É rápido, acolhedor e feito sob medida para você
-    </p>
+    <!-- How it Works Section -->
+    <section class="how-it-works fade-in" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <p class="section-subtitle">
+                É rápido, acolhedor e feito sob medida para você
+            </p>
 
-    <div class="steps-container">
-      <div class="step-card fade-in">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h4>Fale Conosco no WhatsApp</h4>
-          <p>
-            Envie uma mensagem e conte um pouco sobre a pessoa que vai receber, a ocasião e o tom que você quer dar. Estamos prontos para ouvir cada detalhe.
-          </p>
+            <div class="steps-container">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Fale Conosco no WhatsApp</h4>
+                        <p>
+                            Envie uma mensagem e conte um pouco sobre a pessoa que vai receber, a ocasião e o tom que
+                            você quer dar. Estamos prontos para ouvir cada detalhe.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Criamos com Você</h4>
+                        <p>
+                            Juntos, vamos encontrar as palavras certas e lapidar o texto até que ele fique do jeitinho
+                            que você imaginou — simples, divertido, carinhoso ou emocionante.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Confirme e Transforme</h4>
+                        <p>
+                            A mensagem perfeita está pronta. Por <strong>R$ 3,49</strong>, transforme sua emoção em um
+                            Recadim. Um valor transparente para um gesto único, sem surpresas, que vai tocar o coração.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Entregamos com Carinho</h4>
+                        <p>
+                            Assim que tudo estiver pronto, enviamos seu Recadim direto para o WhatsApp da pessoa
+                            especial, no momento que você escolher.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="step-card fade-in">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h4>Criamos com Você</h4>
-          <p>
-            Juntos, vamos encontrar as palavras certas e lapidar o texto até que ele fique do jeitinho que você imaginou — simples, divertido, carinhoso ou emocionante.
-          </p>
-        </div>
-      </div>
-
-
-
-      <div class="step-card fade-in">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h4>Confirme e Transforme</h4>
-          <p>
-            A mensagem perfeita está pronta. Por <strong>R$ 3,49</strong>, transforme sua emoção em um Recadim. Um valor transparente para um gesto único, sem surpresas, que vai tocar o coração.
-          </p>
-        </div>
-      </div>
-
-
-
-      <div class="step-card fade-in">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <h4>Entregamos com Carinho</h4>
-          <p>
-            Assim que tudo estiver pronto, enviamos seu Recadim direto para o WhatsApp da pessoa especial, no momento que você escolher.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- About Section -->
     <section class="about fade-in" id="sobre">
-    <div class="container">
-        <h2 class="section-title">Nossa Missão</h2>
-        <p class="section-subtitle">Transformamos palavras em gestos que ficam na memória</p>
+        <div class="container">
+            <h2 class="section-title">Nossa Missão</h2>
+            <p class="section-subtitle">Transformamos palavras em gestos que ficam na memória</p>
 
-        <div class="about-content">
-        <p>
-            O <strong>Recadim</strong> nasceu para dar vida a mensagens que realmente importam. Em um mundo digital, somos seu parceiro para transformar seus sentimentos em mensagens de <strong>carinho, amizade, gratidão ou apoio</strong>. 
-        </p>
-        <p>
-            Acreditamos no poder de um gesto único: uma palavra enviada com intenção pode mudar um dia, iluminar uma vida e fortalecer laços, criando momentos inesquecíveis.
+            <div class="about-content">
+                <p>
+                    O <strong>Recadim</strong> nasceu para dar vida a mensagens que realmente importam. Em um mundo
+                    digital, somos seu parceiro para transformar seus sentimentos em mensagens de <strong>carinho,
+                        amizade, gratidão ou apoio</strong>.
+                </p>
+                <p>
+                    Acreditamos no poder de um gesto único: uma palavra enviada com intenção pode mudar um dia, iluminar
+                    uma vida e fortalecer laços, criando momentos inesquecíveis.
 
-        </p>
-        </div>
+                </p>
+            </div>
 
-        <div class="stats">
-        <div class="stat-item">
-            <span class="stat-number">3.7k+</span>
-            <span class="stat-label">Mensagens Criadas</span>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">3.7k+</span>
+                    <span class="stat-label">Mensagens Criadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Pessoas Satisfeitas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">700+</span>
+                    <span class="stat-label">Momentos Especiais</span>
+                </div>
+            </div>
         </div>
-        <div class="stat-item">
-            <span class="stat-number">98%</span>
-            <span class="stat-label">Pessoas Satisfeitas</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">700+</span>
-            <span class="stat-label">Momentos Especiais</span>
-        </div>
-        </div>
-    </div>
     </section>
 
 
 
     <!-- Final CTA -->
     <section class="final-cta fade-in" id="download">
-    <div class="container">
-        <h2 class="section-title">Pronto para Enviar um Recadim?</h2>
-        <p class="section-subtitle">
-        É fácil começar: fale conosco no WhatsApp e conte o que você gostaria de dizer.  
-        Vamos juntos transformar suas palavras em algo simples, bonito e cheio de significado.
-        </p>
+        <div class="container">
+            <h2 class="section-title">Pronto para Enviar um Recadim?</h2>
+            <p class="section-subtitle">
+                É fácil começar: fale conosco no WhatsApp e conte o que você gostaria de dizer.
+                Vamos juntos transformar suas palavras em algo simples, bonito e cheio de significado.
+            </p>
 
-        <div class="cta-buttons">
-        <a href="https://wa.me/message/DX4O7GTGHFKZL1" class="btn-primary">
-            💌 Começar no WhatsApp
-        </a>
-        <a href="recadim-faq.html" class="btn-secondary">
-            ❓ Perguntas Frequentes
-        </a>
-        
-         <p class="final-cta-note">
-        ❤ Em poucos minutos sua mensagem estará pronta para surpreender alguém especial.
-        </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/message/DX4O7GTGHFKZL1" class="btn-primary">
+                    💌 Começar no WhatsApp
+                </a>
+                <a href="recadim-faq.html" class="btn-secondary">
+                    ❓ Perguntas Frequentes
+                </a>
 
-
+                <p class="final-cta-note">
+                    ❤ Em poucos minutos sua mensagem estará pronta para surpreender alguém especial.
+                </p>
 
 
+
+
+            </div>
         </div>
-    </div>
     </section>
 
 
@@ -1589,7 +1540,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
             <div class="footer-content">
 
 
-<!--                 <div class="footer-section">
+                <!--                 <div class="footer-section">
                     <h3>Recadim</h3><p style="color: rgba(255,255,255,0.5); line-height: 1.6;">
                         <h4>"Diga o que seu coração sente"</h4> 
                     </p>
@@ -1600,27 +1551,27 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
                 </div> -->
                 <div class="footer-section">
                     <h3>Sobre</h3>
-                        <h4>
-                            <a href="#recursos">Recursos</a>
-                            <a href="#como-funciona">Como Funciona</a>
-                            <a href="#sobre">Nossa História</a>
-                        </h4>
+                    <h4>
+                        <a href="#recursos">Recursos</a>
+                        <a href="#como-funciona">Como Funciona</a>
+                        <a href="#sobre">Nossa História</a>
+                    </h4>
                 </div>
                 <div class="footer-section">
-                    <h3>Fale Conosco</h3>         
-                        <h4>
-                            <a href="#" id="abrir-parceria-popup">Parcerias</a>          
-                            <a href="#" id="abrir-suporte-popup">Suporte</a>
-                            <a href="#" id="abrir-historia-popup">Sua História</a>
-                        </h4>                 
+                    <h3>Fale Conosco</h3>
+                    <h4>
+                        <a href="#" id="abrir-parceria-popup">Parcerias</a>
+                        <a href="#" id="abrir-suporte-popup">Suporte</a>
+                        <a href="#" id="abrir-historia-popup">Sua História</a>
+                    </h4>
                 </div>
                 <div class="footer-section">
                     <h3>Links Úteis</h3>
-                        <h4>
-                            <a href="recadim-faq.html">Perguntas Frequentes</a>
-                            <a href="recadim-privacy.html">Política de Privacidade</a>
-                            <a href="recadim-terms.html">Termos de Uso</a>
-                        </h4>
+                    <h4>
+                        <a href="recadim-faq.html">Perguntas Frequentes</a>
+                        <a href="recadim-privacy.html">Política de Privacidade</a>
+                        <a href="recadim-terms.html">Termos de Uso</a>
+                    </h4>
                 </div>
             </div>
 
@@ -1630,39 +1581,40 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
             <div class="footer-bottom-redes">
-                
-                
-                 <p>
-                    
-                    <div class="social-icons">
-                        <h4>Rede Sociais:</h4>
-                        <a href="https://www.instagram.com/recadim.oficial" class="social-icon">
+
+
+                <p>
+
+                <div class="social-icons">
+                    <h4>Rede Sociais:</h4>
+                    <a href="https://www.instagram.com/recadim.oficial" class="social-icon">
                         <img src="img/instagram-icon.png" alt="Instagram" width="30" height="30">
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61576614112474" class="social-icon">
-                            <img src="img/facebook-icon.png" alt="Facebook" width="30" height="30">
-                        </a>
-                        <a href="https://www.youtube.com/@Recadim-z1l" class="social-icon">
-                            <img src="img/youtube-icon.png" alt="YouTube" width="30" height="30">
-                        </a>
-                        <a href="https://www.tiktok.com/@recadim.oficial" class="social-icon">
-                            <img src="img/tiktok-icon.png" alt="TikTok" width="30" height="30">
-                        </a>
-                        
-                    </div>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61576614112474" class="social-icon">
+                        <img src="img/facebook-icon.png" alt="Facebook" width="30" height="30">
+                    </a>
+                    <a href="https://www.youtube.com/@Recadim-z1l" class="social-icon">
+                        <img src="img/youtube-icon.png" alt="YouTube" width="30" height="30">
+                    </a>
+                    <a href="https://www.tiktok.com/@recadim.oficial" class="social-icon">
+                        <img src="img/tiktok-icon.png" alt="TikTok" width="30" height="30">
+                    </a>
+
+                </div>
                 </p>
 
             </div>
 
 
 
-            </div>
-            <div class="footer-bottom2">
-                <p>&copy; 2025 Recadim. Feito com amor para transformar palavras em momentos especiais.<br>
+        </div>
+        <div class="footer-bottom2">
+            <p>&copy; 2025 Recadim. Feito com amor para transformar palavras em momentos especiais.<br>
                 <small style="opacity: 0.7; margin-top: 12px; display: block;">
                     "Recadim é a marca comercial da empresa inscrita no CNPJ: 60.766.218.0001-83."
-                </small></p>
-            </div>
+                </small>
+            </p>
+        </div>
         </div>
     </footer>
 
@@ -1670,99 +1622,100 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
 
-        <!-- Caixa de texto para parcerias -->
-        <dialog id="parceria-popup">
+    <!-- Caixa de texto para parcerias -->
+    <dialog id="parceria-popup">
         <div class="popup-content">
             <h2>Entre em contato para Parcerias</h2>
             <p>
-            Se você deseja propor uma parceria conosco, preencha os campos abaixo e entraremos em contato!
+                Se você deseja propor uma parceria conosco, preencha os campos abaixo e entraremos em contato!
             </p>
 
             <!-- Formulário de parceria -->
             <form action="mailto:parcerias@recadim.com.br" method="post" enctype="text/plain">
 
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-            </div>
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                </div>
 
-            <div class="form-group">
-                <label for="telefone">Telefone / WhatsApp:</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-            </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                </div>
 
-            <div class="form-group">
-                <label for="social">Link da sua rede social:</label>
-                <input type="url" id="social" name="social" placeholder="https://instagram.com/seuusuario">
-            </div>
+                <div class="form-group">
+                    <label for="social">Link da sua rede social:</label>
+                    <input type="url" id="social" name="social" placeholder="https://instagram.com/seuusuario">
+                </div>
 
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..."
+                        required></textarea>
+                </div>
 
-            <button type="submit">Enviar Parceria</button>
-            <button type="button" id="fechar-parceria">Fechar</button>
+                <button type="submit">Enviar Parceria</button>
+                <button type="button" id="fechar-parceria">Fechar</button>
 
             </form>
         </div>
-        </dialog>
+    </dialog>
 
 
 
 
-    
- <!-- caixa de texto pra sua historia -->
+
+    <!-- caixa de texto pra sua historia -->
     <dialog id="historia-popup">
-    <div class="popup-content">
-        <h2>Conte-nos sua história</h2>
-        <p>
-            Qual é a sua história com Recadim? Adoraríamos saber como uma de nossas mensagens 
-            fez a diferença para você ou para alguém especial.
-        </p>
-<!--    trocar email futuramente -->
-        <form action="mailto:minhahistoria@recadim.com.br" method="post" enctype="text/plain">
-        <textarea name="historia" rows="6" placeholder="Escreva sua história aqui..."></textarea>
-        <button type="submit">Enviar História</button>
-        <button type="button" id="fechar-popup">Fechar</button>
-        </form>
-    </div>
+        <div class="popup-content">
+            <h2>Conte-nos sua história</h2>
+            <p>
+                Qual é a sua história com Recadim? Adoraríamos saber como uma de nossas mensagens
+                fez a diferença para você ou para alguém especial.
+            </p>
+            <!--    trocar email futuramente -->
+            <form action="mailto:minhahistoria@recadim.com.br" method="post" enctype="text/plain">
+                <textarea name="historia" rows="6" placeholder="Escreva sua história aqui..."></textarea>
+                <button type="submit">Enviar História</button>
+                <button type="button" id="fechar-popup">Fechar</button>
+            </form>
+        </div>
     </dialog>
 
 
-    
 
 
 
-<!-- suporte pra webhook n8n -->
+
+    <!-- suporte pra webhook n8n -->
     <dialog id="suporte-popup">
-    <div class="popup-content">
-        <h2>Suporte</h2>
-        <p>
-            Descreva abaixo o problema que você está enfrentando. Nossa equipe entrará em contato
-            o mais breve possível para te ajudar.
-        </p>
-        <form id="suporte-form">       
-        <div class="form-group">
-            <label for="nome">Seu Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+        <div class="popup-content">
+            <h2>Suporte</h2>
+            <p>
+                Descreva abaixo o problema que você está enfrentando. Nossa equipe entrará em contato
+                o mais breve possível para te ajudar.
+            </p>
+            <form id="suporte-form">
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (com DDD):</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="problema">Relato do Problema:</label>
+                    <textarea id="problema" name="problema" rows="6" required></textarea>
+                </div>
+                <button type="submit">Enviar Relato</button>
+                <button type="button" id="fechar-suporte">Fechar</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="whatsapp">WhatsApp (com DDD):</label>
-            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
-        </div>
-        <div class="form-group">
-            <label for="problema">Relato do Problema:</label>
-            <textarea id="problema" name="problema" rows="6" required></textarea>
-        </div>
-        <button type="submit">Enviar Relato</button>
-        <button type="button" id="fechar-suporte">Fechar</button>
-        </form>
-    </div>
     </dialog>
 
 
-   
+
 
     <script>
 
@@ -1771,27 +1724,27 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         function createSnowflakes() {
             const container = document.getElementById('snowContainer');
             if (!container) return; // Segurança caso o ID mude
-            
+
             const flakeCount = 40; // Quantidade de flocos para não pesar
-            
-            for(let i = 0; i < flakeCount; i++) {
+
+            for (let i = 0; i < flakeCount; i++) {
                 const flake = document.createElement('div');
                 flake.classList.add('snowflake');
                 // Caracteres variados de neve
                 flake.innerHTML = ['❄', '❅', '❆', '•'][Math.floor(Math.random() * 4)];
-                
+
                 // Posição aleatória na largura
                 flake.style.left = Math.random() * 100 + '%';
-                
+
                 // Duração da queda aleatória entre 5s e 12s
                 flake.style.animationDuration = (Math.random() * 7 + 5) + 's';
-                
+
                 // Tamanho aleatório
                 flake.style.fontSize = (Math.random() * 12 + 10) + 'px';
-                
+
                 // Atraso aleatório para não cair tudo de uma vez
                 flake.style.animationDelay = Math.random() * 5 + 's';
-                
+
                 container.appendChild(flake);
             }
         }
@@ -1800,16 +1753,16 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
 
-        
+
         window.addEventListener('load', () => {
             document.getElementById('loader').classList.add('hidden');
         });
-        
+
 
 
         // Hide loader when page loads
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
                 document.getElementById('loader').classList.add('hidden');
             }, 500);
         });
@@ -1831,12 +1784,12 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         });
 
         // Mobile menu toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () {
             document.getElementById('navLinks').classList.toggle('active');
         });
 
         // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 100) {
                 nav.classList.add('scrolled');
@@ -1851,7 +1804,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1876,17 +1829,17 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
         // Add floating animation to stats on hover
         document.querySelectorAll('.stat-item').forEach(stat => {
-            stat.addEventListener('mouseenter', function() {
+            stat.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-10px)';
                 this.style.transition = 'transform 0.3s ease';
             });
-            stat.addEventListener('mouseleave', function() {
+            stat.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0)';
             });
         });
 
         // Adiciona o botão de voltar ao topo
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const backToTopBtn = document.getElementById('backToTopBtn');
             if (window.scrollY > 300) { // Mostra o botão após rolar 300px
                 backToTopBtn.classList.add('show');
@@ -1896,7 +1849,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         });
 
         // Faz a rolagem suave ao topo ao clicar no botão
-        document.getElementById('backToTopBtn').addEventListener('click', function(e) {
+        document.getElementById('backToTopBtn').addEventListener('click', function (e) {
             e.preventDefault();
             window.scrollTo({
                 top: 0,
@@ -1906,13 +1859,13 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
         // Adiciona o evento para abrir o pop-up
-        document.getElementById('abrir-historia-popup').addEventListener('click', function(e) {
+        document.getElementById('abrir-historia-popup').addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('historia-popup').showModal();
         });
 
         // Adiciona o evento para fechar o pop-up
-        document.getElementById('fechar-popup').addEventListener('click', function() {
+        document.getElementById('fechar-popup').addEventListener('click', function () {
             document.getElementById('historia-popup').close();
         });
 
@@ -1920,7 +1873,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
         // Adiciona o evento de envio do formulário de suporte
-        document.getElementById('suporte-form').addEventListener('submit', async function(e) {
+        document.getElementById('suporte-form').addEventListener('submit', async function (e) {
             // Previne o comportamento padrão do formulário (que é redirecionar a página)
             e.preventDefault();
 
@@ -1952,26 +1905,26 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         });
 
         // Adiciona o evento para abrir o pop-up de suporte
-        document.getElementById('abrir-suporte-popup').addEventListener('click', function(e) {
+        document.getElementById('abrir-suporte-popup').addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('suporte-popup').showModal();
         });
 
         // Adiciona o evento para fechar o pop-up de suporte
-        document.getElementById('fechar-suporte').addEventListener('click', function() {
+        document.getElementById('fechar-suporte').addEventListener('click', function () {
             document.getElementById('suporte-popup').close();
         });
 
 
 
         // Abrir pop-up de parceria
-        document.getElementById('abrir-parceria-popup').addEventListener('click', function(e) {
+        document.getElementById('abrir-parceria-popup').addEventListener('click', function (e) {
             e.preventDefault();
             document.getElementById('parceria-popup').showModal();
         });
 
         // Fechar pop-up de parceria
-        document.getElementById('fechar-parceria').addEventListener('click', function() {
+        document.getElementById('fechar-parceria').addEventListener('click', function () {
             document.getElementById('parceria-popup').close();
         });
 
@@ -1979,7 +1932,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
 
-/* Scrip que cuida da compatibilidade */
+        /* Scrip que cuida da compatibilidade */
         const dlg = document.getElementById('parceria-popup');
         const openBtn = document.getElementById('abrir-parceria-popup');
         const closeBtn = document.getElementById('fechar-parceria');
@@ -1987,7 +1940,7 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
         openBtn.addEventListener('click', e => {
             e.preventDefault();
             if (dlg.showModal) dlg.showModal();
-            else dlg.setAttribute('open','');
+            else dlg.setAttribute('open', '');
         });
 
         closeBtn.addEventListener('click', () => {
@@ -1998,85 +1951,88 @@ Tudo chega direto ao WhatsApp de quem merece esse carinho.
 
 
 
-/* SCRIPT DO SLIDE VIDEO E FOTOS */
+        /* SCRIPT DO SLIDE VIDEO E FOTOS */
 
-document.addEventListener("DOMContentLoaded", function() {
-    // ... (Seu código existente aqui) ...
-/* --- SCRIPT DO SLIDER ROTATIVO MINIMALISTA --- */
-    const slider = document.getElementById('content-slider');
-    const items = slider.querySelectorAll('.slider-item');
-    let currentIndex = 0;
-    const intervalTime = 6000; // Troca a cada 6 segundos
-    let slideInterval;
+        if (false) { // DISABLED SECTION (User Request)
+            document.addEventListener("DOMContentLoaded", function () {
+                // ... (Seu código existente aqui) ...
+                /* --- SCRIPT DO SLIDER ROTATIVO MINIMALISTA --- */
+                const slider = document.getElementById('content-slider');
+                const items = slider.querySelectorAll('.slider-item');
+                let currentIndex = 0;
+                const intervalTime = 6000; // Troca a cada 6 segundos
+                let slideInterval;
 
-    const videoSlider = document.getElementById('video-slider-item');
-    const videoPlayer = document.getElementById('slider-youtube-player');
-    const videoId = '6KOX112qnjM'; // ID do seu vídeo
-    
-    // URL base para o vídeo (Autoplay e Mutado)
-    const videoSrcBase = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=${videoId}&enablejsapi=1`;
+                const videoSlider = document.getElementById('video-slider-item');
+                const videoPlayer = document.getElementById('slider-youtube-player');
+                const videoId = '6KOX112qnjM'; // ID do seu vídeo
 
-    function showNextSlide() {
-        // Se o slide ativo for o vídeo e ele estiver tocando com som (classe 'playing'), não trocamos
-        if (items[currentIndex].dataset.type === 'video' && items[currentIndex].classList.contains('playing')) {
-            return; 
+                // URL base para o vídeo (Autoplay e Mutado)
+                const videoSrcBase = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1&playlist=${videoId}&enablejsapi=1`;
+
+                function showNextSlide() {
+                    // Se o slide ativo for o vídeo e ele estiver tocando com som (classe 'playing'), não trocamos
+                    if (items[currentIndex].dataset.type === 'video' && items[currentIndex].classList.contains('playing')) {
+                        return;
+                    }
+
+                    // Remove 'active' do item atual
+                    items[currentIndex].classList.remove('active');
+
+                    // Pausa e reseta o vídeo ao sair, garantindo que ele esteja mutado na próxima vez
+                    if (items[currentIndex].dataset.type === 'video') {
+                        items[currentIndex].classList.remove('playing');
+                        // Reseta a URL para forçar o reinício mutado no próximo ciclo
+                        videoPlayer.src = videoSrcBase;
+                    }
+
+                    // Calcula o próximo item
+                    currentIndex = (currentIndex + 1) % items.length;
+
+                    // Ativa o próximo item
+                    items[currentIndex].classList.add('active');
+
+                    // Se o próximo item for o vídeo, resetamos a URL para garantir autoplay mutado
+                    if (items[currentIndex].dataset.type === 'video') {
+                        videoPlayer.src = videoSrcBase;
+                    }
+                }
+
+
+                // Inicia o intervalo de troca
+                slideInterval = setInterval(showNextSlide, intervalTime);
+
+
+                /* --- LÓGICA DE CLIQUE NO VÍDEO (ATIVAR SOM) --- */
+                videoSlider.addEventListener('click', function () {
+                    // Só executa se o vídeo estiver no slide ativo E não estiver tocando com som
+                    if (videoSlider.classList.contains('active') && !videoSlider.classList.contains('playing')) {
+
+                        // 1. Adiciona classe para esconder o overlay e marca como "tocando com som"
+                        videoSlider.classList.add('playing');
+
+                        // 2. Cria o novo SRC: autoplay=1 e mute=0 (com som!)
+                        const newSrcWithSound = videoSrcBase.replace('mute=1', 'mute=0');
+
+                        // 3. Reinicia o vídeo com som (força o play a partir do início)
+                        videoPlayer.src = newSrcWithSound;
+
+                        // 4. Pausa a rotação do slider enquanto o usuário assiste
+                        clearInterval(slideInterval);
+                    } else if (videoSlider.classList.contains('playing')) {
+                        // Se o usuário clicar enquanto estiver tocando com som, nada acontece (ou você pode adicionar uma pausa)
+                        // Para simplicidade, deixamos o vídeo rodar.
+                    }
+
+                }); // Fim do addEventListener do videoSlider.
+            }); // Fim do DOMContentLoaded
         }
 
-        // Remove 'active' do item atual
-        items[currentIndex].classList.remove('active');
-        
-        // Pausa e reseta o vídeo ao sair, garantindo que ele esteja mutado na próxima vez
-        if (items[currentIndex].dataset.type === 'video') {
-            items[currentIndex].classList.remove('playing');
-            // Reseta a URL para forçar o reinício mutado no próximo ciclo
-            videoPlayer.src = videoSrcBase; 
-        }
-
-        // Calcula o próximo item
-        currentIndex = (currentIndex + 1) % items.length;
-        
-        // Ativa o próximo item
-        items[currentIndex].classList.add('active');
-
-        // Se o próximo item for o vídeo, resetamos a URL para garantir autoplay mutado
-        if (items[currentIndex].dataset.type === 'video') {
-             videoPlayer.src = videoSrcBase;
-        }
-    }
-
-
-    // Inicia o intervalo de troca
-    slideInterval = setInterval(showNextSlide, intervalTime);
-
-
-    /* --- LÓGICA DE CLIQUE NO VÍDEO (ATIVAR SOM) --- */
-    videoSlider.addEventListener('click', function() {
-        // Só executa se o vídeo estiver no slide ativo E não estiver tocando com som
-        if (videoSlider.classList.contains('active') && !videoSlider.classList.contains('playing')) {
-            
-            // 1. Adiciona classe para esconder o overlay e marca como "tocando com som"
-            videoSlider.classList.add('playing');
-            
-            // 2. Cria o novo SRC: autoplay=1 e mute=0 (com som!)
-            const newSrcWithSound = videoSrcBase.replace('mute=1', 'mute=0');
-            
-            // 3. Reinicia o vídeo com som (força o play a partir do início)
-            videoPlayer.src = newSrcWithSound;
-            
-            // 4. Pausa a rotação do slider enquanto o usuário assiste
-            clearInterval(slideInterval); 
-        } else if (videoSlider.classList.contains('playing')) {
-             // Se o usuário clicar enquanto estiver tocando com som, nada acontece (ou você pode adicionar uma pausa)
-             // Para simplicidade, deixamos o vídeo rodar.
-        }
-    
-    }); // Fim do addEventListener do videoSlider.
-}); // Fim do DOMContentLoaded
-    
-/* FINAL DO SCRIPT SLIDE VIDEO E FOTO */
+        /* FINAL DO SCRIPT SLIDE VIDEO E FOTO */
 
 
 
     </script>
 </body>
+
 </html>
